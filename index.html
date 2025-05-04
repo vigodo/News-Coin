@@ -1,83 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News Coin - Quanto mais loucura, mais valor.</title>
+    <title>News Coin - The crazier, the more valuable.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
       :root {
         --bg-light: #fdf1dc;
-        --bg-dark: #1a1a1a;
         --text-light: #1a1a1a;
-        --text-dark: #fdf1dc;
         --primary: #fff8e7;
+        --accent: #ff6b6b;
       }
+
       body {
         background-color: var(--bg-light);
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
         color: var(--text-light);
-        transition: background-color 0.3s, color 0.3s;
+        overflow-x: hidden;
       }
-      body.dark {
-        background-color: var(--bg-dark);
-        color: var(--text-dark);
+
+      .logo-animation {
+        animation: float 3s ease-in-out infinite,
+          moveRight 15s linear infinite alternate;
       }
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-      }
-      nav a {
-        margin: 0 10px;
-        text-decoration: none;
-        color: inherit;
-        font-weight: bold;
-        font-size: 0.9em;
-      }
-      .buy-button,
-      .fake-button,
-      .toggle-mode,
-      .social-button {
-        background: none;
-        border: 2px solid currentColor;
-        padding: 8px 15px;
-        border-radius: 10px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: transform 0.2s;
-        margin-left: 8px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.8em;
-      }
-      .buy-button:hover,
-      .fake-button:hover,
-      .toggle-mode:hover,
-      .social-button:hover {
-        transform: scale(1.05);
-      }
-      .twitter-button,
-      .telegram-button {
-        color: currentColor;
-        border-color: currentColor;
-      }
-      .twitter-button i,
-      .telegram-button i {
-        color: inherit;
-      }
-      main {
-        text-align: center;
-        padding: 30px 15px;
-      }
-      main img {
-        width: 200px;
-        max-width: 80%;
-        animation: float 3s ease-in-out infinite;
-      }
+
       @keyframes float {
         0%,
         100% {
@@ -87,155 +42,691 @@
           transform: translateY(-10px);
         }
       }
-      h1 {
-        font-size: 1.8em;
-        margin: 15px 0;
-        line-height: 1.3;
-        padding: 0 10px;
-      }
-      p {
-        font-size: 1.1em;
-        margin-bottom: 25px;
-      }
-      .features {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 30px;
-      }
-      .feature-box {
-        width: 100%;
-        max-width: 300px;
-        margin: 10px;
-        padding: 15px;
-        background-color: var(--primary);
-        border-radius: 15px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-      .dark .feature-box {
-        background-color: #333;
-        color: var(--text-dark);
-      }
-      .roadmap,
-      .tokenomics {
-        text-align: left;
-        padding: 20px;
-      }
-      .roadmap h2,
-      .tokenomics h2 {
-        font-size: 2em;
-      }
-      .roadmap ul,
-      .tokenomics ul {
-        list-style-type: none;
-        padding-left: 15px;
-      }
-      .roadmap li,
-      .tokenomics li {
-        margin-bottom: 10px;
+
+      @keyframes moveRight {
+        0% {
+          transform: translateX(-20px);
+        }
+        100% {
+          transform: translateX(20px);
+        }
       }
 
-      @media (max-width: 480px) {
-        header {
-          flex-direction: column;
-          padding: 15px;
+      .feature-box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .feature-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-hover-effect {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-hover-effect::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: all 0.5s ease;
+      }
+
+      .btn-hover-effect:hover::after {
+        left: 100%;
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
         }
-        nav {
-          margin: 15px 0;
+        50% {
+          transform: scale(1.05);
         }
-        h1 {
-          font-size: 1.5em;
+        100% {
+          transform: scale(1);
         }
       }
+
+      .roadmap-item {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 30px;
+      }
+
+      .roadmap-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: var(--accent);
+      }
+
+      .roadmap-item::after {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 20px;
+        width: 1px;
+        height: calc(100% - 15px);
+        background-color: var(--accent);
+      }
+
+      .roadmap-item:last-child::after {
+        display: none;
+      }
+
+      .tokenomics-item {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .tokenomics-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      .glow-text {
+        text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+      }
+
+      .section-divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+        margin: 60px 0;
+      }
+
+      .news-ticker {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--accent);
+        color: white;
+        padding: 6px 0;
+        overflow: hidden;
+        z-index: 100;
+        font-size: 0.85rem;
+      }
+
+      .ticker-content {
+        display: inline-block;
+        white-space: nowrap;
+        animation: ticker 30s linear infinite;
+      }
+
+      @keyframes ticker {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .floating-coins {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .coin {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-image: url("https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true");
+        background-size: contain;
+        opacity: 0.7;
+        animation: float-coin 10s linear infinite;
+      }
+
+      @keyframes float-coin {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.7;
+        }
+        90% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-500px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .language-switcher {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      .language-btn {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .language-btn:hover {
+        background: rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+      }
+
+      .content-en {
+        display: block;
+      }
+
+      .content-pt {
+        display: none;
+      }
+
+      body.portuguese .content-en {
+        display: none;
+      }
+
+      body.portuguese .content-pt {
+        display: block;
+      }
+
+      .news-item {
+        display: inline-block;
+        margin-right: 40px;
+      }
+
+      .ticker-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .ticker-label {
+        font-weight: bold;
+        margin-right: 10px;
+        white-space: nowrap;
+      }
+
+      /* New UI Enhancements */
+      .header-container {
+        background: rgba(253, 241, 220, 0.9);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .main-container {
+        background: linear-gradient(
+          180deg,
+          rgba(253, 241, 220, 0.8) 0%,
+          rgba(253, 241, 220, 0.95) 100%
+        );
+      }
+
+      .social-button {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        color: white;
+      }
+
+      .social-button:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+
+      .buy-button {
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      }
+
+      .fake-button {
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.5);
+      }
+
+      .tokenomics-container {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .roadmap-container {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        border-radius: 16px;
+        padding: 30px;
+      }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
   </head>
-  <body>
-    <header>
-      <img
-        src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
-        alt="News Coin Logo"
-        style="height: 40px"
-      />
-      <nav>
-        <a href="#">Home</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#tokenomics">Tokenomics</a>
-        <a href="#">Community</a>
+  <body class="english">
+    <div class="floating-coins" id="floatingCoins"></div>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
+        <span class="content-en">PT</span>
+        <span class="content-pt">EN</span>
+      </button>
+    </div>
+
+    <header
+      class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50"
+    >
+      <div class="flex items-center mb-4 md:mb-0">
+        <img
+          src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
+          alt="News Coin Logo"
+          class="h-10 mr-4 logo-animation"
+        />
+        <h1 class="text-xl font-bold hidden md:block">NEWS COIN</h1>
+      </div>
+
+      <nav class="flex flex-wrap justify-center gap-4 mb-4 md:mb-0">
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
+          >Home</a
+        >
+        <a
+          href="#roadmap"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
+          >Roadmap</a
+        >
+        <a
+          href="#tokenomics"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
+          >Tokenomics</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
+          >Community</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-en"
+          >Home</a
+        >
+        <a
+          href="#roadmap"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-en"
+          >Roadmap</a
+        >
+        <a
+          href="#tokenomics"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-en"
+          >Tokenomics</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-en"
+          >Community</a
+        >
       </nav>
-      <div>
+
+      <div class="flex flex-wrap justify-center gap-2">
         <button
-          class="social-button twitter-button"
+          class="social-button btn-hover-effect px-4 py-2 rounded-lg font-bold flex items-center"
           onclick="window.open('https://x.com/NewscoinOf')"
         >
-          <i class="fab fa-twitter"></i> Twitter
+          <i class="fab fa-twitter mr-2"></i> Twitter
         </button>
         <button
-          class="social-button telegram-button"
+          class="social-button btn-hover-effect px-4 py-2 rounded-lg font-bold flex items-center"
           onclick="window.open('https://t.me/+Qmi0Y9mPd642ZTJh')"
         >
-          <i class="fab fa-telegram"></i> Telegram
+          <i class="fab fa-telegram mr-2"></i> Telegram
         </button>
-        <button class="buy-button">Buy $FAKE</button>
-        <button class="toggle-mode" onclick="toggleMode()">Modo Escuro</button>
+        <button
+          class="buy-button btn-hover-effect px-4 py-2 rounded-lg font-bold bg-amber-500 text-white border-none pulse"
+        >
+          <span class="content-pt">Comprar $FAKE</span>
+          <span class="content-en">Buy $FAKE</span>
+        </button>
       </div>
     </header>
-    <main>
-      <img
-        src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
-        alt="News Coin Mascote"
-      />
-      <h1>O seu radar diário do universo cripto</h1>
-      <p>Quanto mais loucura, mais valor.</p>
-      <button class="fake-button">dar uma FAKE</button>
-      <div class="features">
-        <div class="feature-box">
-          <p>
-            Você pode distribuir uma FAKE para premiar quem espalhou a fake news
-            mais criativa.
-          </p>
-        </div>
-        <div class="feature-box">
-          <p>
-            Memes oficiais gerados pela comunidade com base nas notícias da
-            semana.
-          </p>
-        </div>
-        <div class="feature-box">
-          <p>
-            Um oráculo cripto baseado nas previsões da Fox News e CNN (todas
-            erradas, claro).
-          </p>
+
+    <main
+      class="main-container text-center py-16 px-4 md:px-10 lg:px-20 relative"
+    >
+      <div class="max-w-4xl mx-auto">
+        <img
+          src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
+          alt="News Coin Mascot"
+          class="w-48 md:w-64 mx-auto mb-8 logo-animation"
+        />
+
+        <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
+          <span class="content-pt">O seu radar diário do universo cripto</span>
+          <span class="content-en">Your daily crypto universe radar</span>
+        </h1>
+
+        <p class="text-xl md:text-2xl mb-8 font-medium">
+          <span class="content-pt">Quanto mais loucura, mais valor.</span>
+          <span class="content-en">The crazier, the more valuable.</span>
+        </p>
+
+        <button
+          class="fake-button btn-hover-effect px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none transform hover:scale-105 transition-all duration-300 shadow-lg"
+        >
+          <span class="content-pt">Dar uma FAKE</span>
+          <span class="content-en">Give a FAKE</span>
+        </button>
+
+        <div class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div class="feature-box p-6 rounded-xl shadow-md">
+            <div class="text-amber-500 text-4xl mb-4">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 content-pt">Distribua FAKEs</h3>
+            <h3 class="text-xl font-bold mb-3 content-en">Distribute FAKEs</h3>
+            <p class="text-gray-700 content-pt">
+              Você pode distribuir uma FAKE para premiar quem espalhou a fake
+              news mais criativa.
+            </p>
+            <p class="text-gray-700 content-en">
+              You can distribute a FAKE to reward who spread the most creative
+              fake news.
+            </p>
+          </div>
+
+          <div class="feature-box p-6 rounded-xl shadow-md">
+            <div class="text-amber-500 text-4xl mb-4">
+              <i class="fas fa-laugh-squint"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 content-pt">Memes Oficiais</h3>
+            <h3 class="text-xl font-bold mb-3 content-en">Official Memes</h3>
+            <p class="text-gray-700 content-pt">
+              Memes oficiais gerados pela comunidade com base nas notícias da
+              semana.
+            </p>
+            <p class="text-gray-700 content-en">
+              Official memes generated by the community based on the week's
+              news.
+            </p>
+          </div>
+
+          <div class="feature-box p-6 rounded-xl shadow-md">
+            <div class="text-amber-500 text-4xl mb-4">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3 content-pt">Oráculo Cripto</h3>
+            <h3 class="text-xl font-bold mb-3 content-en">Crypto Oracle</h3>
+            <p class="text-gray-700 content-pt">
+              Um oráculo cripto baseado nas previsões da Fox News e CNN (todas
+              erradas, claro).
+            </p>
+            <p class="text-gray-700 content-en">
+              A crypto oracle based on Fox News and CNN predictions (all wrong,
+              of course).
+            </p>
+          </div>
         </div>
       </div>
     </main>
-    <section id="roadmap" class="roadmap">
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Lançamento do Whitepaper</li>
-        <li>Parcerias com influenciadores</li>
-        <li>Plataforma para criação de memes</li>
-        <li>Desenvolvimento do Oráculo Cripto</li>
-        <li>ICO e Listagem em Exchanges</li>
-      </ul>
+
+    <div class="section-divider"></div>
+
+    <section
+      id="roadmap"
+      class="roadmap py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
+    >
+      <div class="roadmap-container">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text">
+          Roadmap
+        </h2>
+
+        <div class="space-y-2">
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 content-pt">
+              Lançamento do Whitepaper
+            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">
+              Whiteppaper Launch
+            </h3>
+            <p class="text-gray-700 content-pt">
+              Documento oficial explicando a visão e tecnologia por trás da News
+              Coin.
+            </p>
+            <p class="text-gray-700 content-en">
+              Official document explaining the vision and technology behind News
+              Coin.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 content-pt">
+              Parcerias com influenciadores
+            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">
+              Influencer Partnerships
+            </h3>
+            <p class="text-gray-700 content-pt">
+              Colaborações com os maiores criadores de conteúdo cripto.
+            </p>
+            <p class="text-gray-700 content-en">
+              Collaborations with the biggest crypto content creators.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 content-pt">
+              Plataforma para criação de memes
+            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">
+              Meme Creation Platform
+            </h3>
+            <p class="text-gray-700 content-pt">
+              Ferramenta integrada para criação e compartilhamento de memes.
+            </p>
+            <p class="text-gray-700 content-en">
+              Integrated tool for meme creation and sharing.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 content-pt">
+              Desenvolvimento do Oráculo Cripto
+            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">
+              Crypto Oracle Development
+            </h3>
+            <p class="text-gray-700 content-pt">
+              Implementação do sistema de oráculo baseado em notícias.
+            </p>
+            <p class="text-gray-700 content-en">
+              Implementation of the news-based oracle system.
+            </p>
+          </div>
+
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 content-pt">
+              ICO e Listagem em Exchanges
+            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">
+              ICO and Exchange Listings
+            </h3>
+            <p class="text-gray-700 content-pt">
+              Oferta inicial de moedas e listagem nas principais exchanges.
+            </p>
+            <p class="text-gray-700 content-en">
+              Initial coin offering and listing on major exchanges.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="tokenomics" class="tokenomics">
-      <h2>Tokenomics</h2>
-      <ul>
-        <li><strong>Nome do Token:</strong> News Coin ($FAKE)</li>
-        <li><strong>Oferta Total:</strong> 1.000.000.000 $FAKE</li>
-        <li>
-          <strong>Distribuição:</strong> 90% ICO,10% dev/equipe.
-        </li>
-      </ul>
+
+    <div class="section-divider"></div>
+
+    <section
+      id="tokenomics"
+      class="tokenomics py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
+    >
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text">
+        <span class="content-pt">Tokenomics</span>
+        <span class="content-en">Tokenomics</span>
+      </h2>
+
+      <div class="tokenomics-container p-8 rounded-xl shadow-md">
+        <ul class="space-y-4">
+          <li class="tokenomics-item">
+            <strong class="text-lg content-pt">Nome do Token:</strong>
+            <strong class="text-lg content-en">Token Name:</strong>
+            <span> News Coin ($FAKE)</span>
+          </li>
+          <li class="tokenomics-item">
+            <strong class="text-lg content-pt">Oferta Total:</strong>
+            <strong class="text-lg content-en">Total Supply:</strong>
+            <span> 1.000.000.000 $FAKE</span>
+          </li>
+          <li class="tokenomics-item">
+            <strong class="text-lg content-pt">Distribuição:</strong>
+            <strong class="text-lg content-en">Distribution:</strong>
+            <span> 70% ICO, 20% partnerships, 10% dev/team</span>
+          </li>
+        </ul>
+
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 content-pt">Alocação de Tokens</h3>
+          <h3 class="text-xl font-bold mb-4 content-en">Token Allocation</h3>
+          <div class="w-full bg-gray-200 rounded-full h-4">
+            <div
+              class="bg-gradient-to-r from-amber-400 to-amber-600 h-4 rounded-full"
+              style="width: 70%"
+            ></div>
+          </div>
+          <div class="flex justify-between mt-2 text-sm">
+            <span class="content-pt">ICO (70%)</span>
+            <span class="content-en">ICO (70%)</span>
+            <span class="content-pt">Parcerias (20%)</span>
+            <span class="content-en">Partnerships (20%)</span>
+            <span class="content-pt">Equipe (10%)</span>
+            <span class="content-en">Team (10%)</span>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <div class="news-ticker">
+      <div class="ticker-content">
+        <span class="ticker-container">
+          <span class="ticker-label content-pt">ÚLTIMAS NOTÍCIAS:</span>
+          <span class="ticker-label content-en">LATEST NEWS:</span>
+          <span class="news-item content-pt"
+            >Elon Musk compra a News Coin por 1 milhão de Bitcoin!</span
+          >
+          <span class="news-item content-en"
+            >Elon Musk buys News Coin for 1 million Bitcoin!</span
+          >
+          <span class="news-item content-pt"
+            >Governo anuncia isenção fiscal para transações com $FAKE!</span
+          >
+          <span class="news-item content-en"
+            >Government announces tax exemption for $FAKE transactions!</span
+          >
+          <span class="news-item content-pt"
+            >$FAKE vai superar Bitcoin em valor de mercado!</span
+          >
+          <span class="news-item content-en"
+            >$FAKE will surpass Bitcoin in market value!</span
+          >
+        </span>
+      </div>
+    </div>
+
     <script>
-      function toggleMode() {
-        document.body.classList.toggle("dark");
+      function toggleLanguage() {
+        document.body.classList.toggle("portuguese");
       }
+
+      // Create floating coins
+      function createFloatingCoins() {
+        const container = document.getElementById("floatingCoins");
+        const coinCount = 15;
+
+        for (let i = 0; i < coinCount; i++) {
+          const coin = document.createElement("div");
+          coin.className = "coin";
+
+          // Random position
+          const leftPos = Math.random() * 100;
+          coin.style.left = `${leftPos}%`;
+
+          // Random animation delay
+          const delay = Math.random() * 10;
+          coin.style.animationDelay = `${delay}s`;
+
+          // Random size
+          const size = 20 + Math.random() * 20;
+          coin.style.width = `${size}px`;
+          coin.style.height = `${size}px`;
+
+          container.appendChild(coin);
+        }
+      }
+
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        createFloatingCoins();
+
+        // Typing effect on title
+        const title = document.querySelector("main h1 .content-en");
+        const originalText = title.textContent;
+        title.textContent = "";
+
+        let i = 0;
+        const typingEffect = setInterval(() => {
+          if (i < originalText.length) {
+            title.textContent += originalText.charAt(i);
+            i++;
+          } else {
+            clearInterval(typingEffect);
+          }
+        }, 50);
+      });
     </script>
   </body>
 </html>
