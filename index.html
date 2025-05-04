@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News Coin - The crazier, the more valuable.</title>
+    <title>News Coin - Quanto mais loucura, mais valor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -261,19 +261,19 @@
       }
 
       .content-en {
-        display: block;
+        display: none;
       }
 
       .content-pt {
-        display: none;
-      }
-
-      body.portuguese .content-en {
-        display: none;
-      }
-
-      body.portuguese .content-pt {
         display: block;
+      }
+
+      body.english .content-en {
+        display: block;
+      }
+
+      body.english .content-pt {
+        display: none;
       }
 
       .news-item {
@@ -340,14 +340,14 @@
       }
     </style>
   </head>
-  <body class="english">
+  <body class="portuguese">
     <div class="floating-coins" id="floatingCoins"></div>
 
     <!-- Language Switcher -->
     <div class="language-switcher">
       <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
-        <span class="content-en">PT</span>
         <span class="content-pt">EN</span>
+        <span class="content-en">PT</span>
       </button>
     </div>
 
@@ -367,7 +367,7 @@
         <a
           href="#"
           class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
-          >Home</a
+          >Início</a
         >
         <a
           href="#roadmap"
@@ -382,7 +382,7 @@
         <a
           href="#"
           class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
-          >Community</a
+          >Comunidade</a
         >
         <a
           href="#"
@@ -419,12 +419,12 @@
         >
           <i class="fab fa-telegram mr-2"></i> Telegram
         </button>
-        <button
+        <a
+          href="YOUR_BUY_LINK_HERE"
           class="buy-button btn-hover-effect px-4 py-2 rounded-lg font-bold bg-amber-500 text-white border-none pulse"
         >
-          <span class="content-pt">Comprar $FAKE</span>
-          <span class="content-en">Buy $FAKE</span>
-        </button>
+          Comprar $FAKE
+        </a>
       </div>
     </header>
 
@@ -448,12 +448,12 @@
           <span class="content-en">The crazier, the more valuable.</span>
         </p>
 
-        <button
+        <a
+          href="https://x.com/NewscoinOf"
           class="fake-button btn-hover-effect px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-amber-400 to-amber-600 text-white border-none transform hover:scale-105 transition-all duration-300 shadow-lg"
         >
-          <span class="content-pt">Dar uma FAKE</span>
-          <span class="content-en">Give a FAKE</span>
-        </button>
+          Dê um FAKE
+        </a>
 
         <div class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <div class="feature-box p-6 rounded-xl shadow-md">
@@ -515,7 +515,8 @@
     >
       <div class="roadmap-container">
         <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text">
-          Roadmap
+          <span class="content-pt">Plano de Desenvolvimento</span>
+          <span class="content-en">Roadmap</span>
         </h2>
 
         <div class="space-y-2">
@@ -606,7 +607,7 @@
       class="tokenomics py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
     >
       <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text">
-        <span class="content-pt">Tokenomics</span>
+        <span class="content-pt">Economia do Token</span>
         <span class="content-en">Tokenomics</span>
       </h2>
 
@@ -620,12 +621,19 @@
           <li class="tokenomics-item">
             <strong class="text-lg content-pt">Oferta Total:</strong>
             <strong class="text-lg content-en">Total Supply:</strong>
-            <span> 1.000.000.000 $FAKE</span>
+            <span> 1,000,000,000 $FAKE</span>
           </li>
           <li class="tokenomics-item">
             <strong class="text-lg content-pt">Distribuição:</strong>
             <strong class="text-lg content-en">Distribution:</strong>
-            <span> 70% ICO, 20% partnerships, 10% dev/team</span>
+            <span class="content-pt">
+              80% ICO, 5% parcerias, 15% equipe (dividido entre 5
+              desenvolvedores com 3% cada)
+            </span>
+            <span class="content-en">
+              80% ICO, 5% partnerships, 15% team (divided among 5 developers
+              with 3% each)
+            </span>
           </li>
         </ul>
 
@@ -639,12 +647,12 @@
             ></div>
           </div>
           <div class="flex justify-between mt-2 text-sm">
-            <span class="content-pt">ICO (70%)</span>
-            <span class="content-en">ICO (70%)</span>
-            <span class="content-pt">Parcerias (20%)</span>
-            <span class="content-en">Partnerships (20%)</span>
-            <span class="content-pt">Equipe (10%)</span>
-            <span class="content-en">Team (10%)</span>
+            <span class="content-pt">ICO (80%)</span>
+            <span class="content-en">ICO (80%)</span>
+            <span class="content-pt">Parcerias (5%)</span>
+            <span class="content-en">Partnerships (5%)</span>
+            <span class="content-pt">Equipe (15%)</span>
+            <span class="content-en">Team (15%)</span>
           </div>
         </div>
       </div>
@@ -679,7 +687,7 @@
 
     <script>
       function toggleLanguage() {
-        document.body.classList.toggle("portuguese");
+        document.body.classList.toggle("english");
       }
 
       // Create floating coins
@@ -713,7 +721,7 @@
         createFloatingCoins();
 
         // Typing effect on title
-        const title = document.querySelector("main h1 .content-en");
+        const title = document.querySelector("main h1 .content-pt");
         const originalText = title.textContent;
         title.textContent = "";
 
