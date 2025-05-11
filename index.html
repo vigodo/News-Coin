@@ -338,10 +338,306 @@
         border-radius: 16px;
         padding: 30px;
       }
+
+      /* Buy Section Styles */
+      .buy-section {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .contract-box {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        padding: 15px;
+        position: relative;
+      }
+
+      .copy-btn {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 4px;
+        padding: 2px 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .copy-btn:hover {
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .input-field {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 12px 15px;
+        width: 100%;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+
+      .input-field:focus {
+        outline: none;
+        border-color: #ff6b6b;
+        box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+      }
+
+      .conversion-box {
+        background: rgba(245, 158, 11, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        text-align: center;
+        margin: 15px 0;
+      }
+
+      .buy-now-btn {
+        background: linear-gradient(to right, #f59e0b, #f97316);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+      }
+
+      .buy-now-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(245, 158, 11, 0.4);
+      }
+
+      .buy-now-btn:active {
+        transform: translateY(0);
+      }
+
+      .info-text {
+        font-size: 0.85rem;
+        color: #666;
+        margin-top: 10px;
+      }
+
+      .qr-code {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .qr-code img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+
+      .network-badge {
+        display: inline-block;
+        background: #f0b90b;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        margin-left: 8px;
+      }
+
+      /* Wallet Connection Styles */
+      .wallet-btn {
+        background: linear-gradient(to right, #f0b90b, #f0b90b);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .wallet-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(240, 185, 11, 0.3);
+      }
+
+      .wallet-btn:active {
+        transform: translateY(0);
+      }
+
+      .wallet-btn i {
+        font-size: 16px;
+      }
+
+      .wallet-connected {
+        background: linear-gradient(to right, #10b981, #10b981);
+      }
+
+      .wallet-address {
+        font-size: 0.75rem;
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      /* Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 12px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #666;
+      }
+
+      .modal-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .modal-message {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
+
+      .modal-btn {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .modal-btn-primary {
+        background-color: #f0b90b;
+        color: white;
+        border: none;
+      }
+
+      .modal-btn-secondary {
+        background-color: #f3f4f6;
+        color: #333;
+        border: 1px solid #d1d5db;
+      }
+
+      .modal-btn:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Transaction Status */
+      .tx-status {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+      }
+
+      .tx-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .tx-success {
+        color: #10b981;
+      }
+
+      .tx-error {
+        color: #ef4444;
+      }
+
+      .tx-pending {
+        color: #f59e0b;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body class="portuguese">
     <div class="floating-coins" id="floatingCoins"></div>
+
+    <!-- Transaction Modal -->
+    <div class="modal" id="transactionModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <div class="modal-title" id="modalTitle">Transação em Andamento</div>
+        <div class="tx-status">
+          <div class="tx-icon tx-pending">
+            <i class="fas fa-spinner"></i>
+          </div>
+          <div class="modal-message" id="modalMessage">
+            Aguardando confirmação da transação...
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="modal-btn modal-btn-secondary" onclick="closeModal()">
+            Fechar
+          </button>
+          <button
+            class="modal-btn modal-btn-primary"
+            onclick="viewOnBscScan()"
+            id="viewTxBtn"
+            style="display: none"
+          >
+            Ver no BscScan
+          </button>
+        </div>
+      </div>
+    </div>
 
     <!-- Language Switcher -->
     <div class="language-switcher">
@@ -380,9 +676,9 @@
           >Tokenomics</a
         >
         <a
-          href="#"
+          href="#buy"
           class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-pt"
-          >Comunidade</a
+          >Comprar Tokens</a
         >
         <a
           href="#"
@@ -400,9 +696,9 @@
           >Tokenomics</a
         >
         <a
-          href="#"
+          href="#buy"
           class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-gray-400 transition content-en"
-          >Community</a
+          >Buy Tokens</a
         >
       </nav>
 
@@ -419,12 +715,15 @@
         >
           <i class="fab fa-telegram mr-2"></i> Telegram
         </button>
-        <a
-          href="https://t.me/+twKGG6sn6XphMWQx"
-          class="buy-button btn-hover-effect px-4 py-2 rounded-lg font-bold bg-amber-500 text-white border-none pulse"
+        <button
+          class="wallet-btn"
+          id="connectWalletBtn"
+          onclick="connectWallet()"
         >
-          Comprar $FAKE
-        </a>
+          <i class="fas fa-wallet"></i>
+          <span class="content-pt">Conectar Carteira</span>
+          <span class="content-en">Connect Wallet</span>
+        </button>
       </div>
     </header>
 
@@ -510,6 +809,130 @@
     <div class="section-divider"></div>
 
     <section
+      id="buy"
+      class="buy-tokens py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
+    >
+      <div class="buy-section">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text">
+          <span class="content-pt">Compre Tokens $FAKE</span>
+          <span class="content-en">Buy $FAKE Tokens</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">
+              <span class="content-pt">Contrato do Token</span>
+              <span class="content-en">Token Contract</span>
+              <span class="network-badge">BSC</span>
+            </h3>
+
+            <div class="contract-box mb-6">
+              <code id="contract-address"
+                >0x4B85a45c1B75fa46464C73c2D5755239A69927f6</code
+              >
+              <button
+                class="copy-btn"
+                onclick="copyToClipboard('contract-address')"
+              >
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+
+            <h3 class="text-xl font-bold mb-4">
+              <span class="content-pt">Carteira de Recebimento</span>
+              <span class="content-en">Receiving Wallet</span>
+            </h3>
+
+            <div class="contract-box mb-6">
+              <code id="receive-address"
+                >0x4B85a45c1B75fa46464C73c2D5755239A69927f6</code
+              >
+              <button
+                class="copy-btn"
+                onclick="copyToClipboard('receive-address')"
+              >
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+
+            <div class="conversion-box">
+              <p class="font-bold">
+                <span class="content-pt">Taxa de Conversão:</span>
+                <span class="content-en">Conversion Rate:</span>
+              </p>
+              <p class="text-2xl font-bold">1 BNB = 1,000,000 $FAKE</p>
+            </div>
+
+            <p class="info-text content-pt">
+              Envie BNB para a carteira acima e receba automaticamente seus
+              tokens $FAKE.
+            </p>
+            <p class="info-text content-en">
+              Send BNB to the wallet above and automatically receive your $FAKE
+              tokens.
+            </p>
+          </div>
+
+          <div>
+            <div class="qr-code mb-6">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x4B85a45c1B75fa46464C73c2D5755239A69927f6"
+                alt="QR Code"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="bnb-amount" class="block text-left mb-2 font-medium">
+                <span class="content-pt">Quantidade de BNB:</span>
+                <span class="content-en">BNB Amount:</span>
+              </label>
+              <input
+                type="number"
+                id="bnb-amount"
+                class="input-field"
+                placeholder="0.1"
+                step="0.01"
+                min="0.01"
+                oninput="calculateTokens()"
+              />
+            </div>
+
+            <div class="mb-4">
+              <label
+                for="token-amount"
+                class="block text-left mb-2 font-medium"
+              >
+                <span class="content-pt">Você receberá:</span>
+                <span class="content-en">You will receive:</span>
+              </label>
+              <input
+                type="text"
+                id="token-amount"
+                class="input-field"
+                readonly
+                value="0 $FAKE"
+              />
+            </div>
+
+            <button class="buy-now-btn" onclick="buyTokens()">
+              <span class="content-pt">COMPRAR AGORA</span>
+              <span class="content-en">BUY NOW</span>
+            </button>
+
+            <p class="info-text mt-4 content-pt">
+              * Transações são processadas automaticamente na rede BSC.
+            </p>
+            <p class="info-text mt-4 content-en">
+              * Transactions are automatically processed on BSC network.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section
       id="roadmap"
       class="roadmap py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
     >
@@ -524,9 +947,7 @@
             <h3 class="text-xl font-bold mb-2 content-pt">
               Lançamento do Whitepaper
             </h3>
-            <h3 class="text-xl font-bold mb-2 content-en">
-              Whiteppaper Launch
-            </h3>
+            <h3 class="text-xl font-bold mb-2 content-en">Whitepaper Launch</h3>
             <p class="text-gray-700 content-pt">
               Documento oficial explicando a visão e tecnologia por trás da News
               Coin.
@@ -545,7 +966,7 @@
               Influencer Partnerships
             </h3>
             <p class="text-gray-700 content-pt">
-              Colaborações com os maiores criadores de conteúdo cripto.
+              Colaborações com os maiores criadores de conteúdo crypto.
             </p>
             <p class="text-gray-700 content-en">
               Collaborations with the biggest crypto content creators.
@@ -686,6 +1107,17 @@
     </div>
 
     <script>
+      // Contract and wallet addresses
+      const TOKEN_CONTRACT = "0x4B85a45c1B75fa46464C73c2D5755239A69927f6";
+      const RECEIVING_WALLET = "0x4B85a45c1B75fa46464C73c2D5755239A69927f6";
+      const CONVERSION_RATE = 1000000; // 1 BNB = 1,000,000 tokens
+      const BSC_CHAIN_ID = "0x38"; // 56 in decimal
+      const BSC_RPC_URL = "https://bsc-dataseed.binance.org/";
+
+      // Global variables
+      let currentAccount = null;
+      let currentTxHash = null;
+
       function toggleLanguage() {
         document.body.classList.toggle("english");
       }
@@ -716,24 +1148,293 @@
         }
       }
 
+      // Copy to clipboard function
+      function copyToClipboard(elementId) {
+        const element = document.getElementById(elementId);
+        const text = element.textContent;
+
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            // Show copied notification
+            const originalText = element.textContent;
+            element.textContent = "Copiado!";
+
+            setTimeout(() => {
+              element.textContent = originalText;
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy text: ", err);
+          });
+      }
+
+      // Calculate tokens based on BNB amount
+      function calculateTokens() {
+        const bnbAmount = parseFloat(
+          document.getElementById("bnb-amount").value
+        );
+        if (!isNaN(bnbAmount) && bnbAmount > 0) {
+          const tokens = bnbAmount * CONVERSION_RATE;
+          document.getElementById("token-amount").value =
+            tokens.toLocaleString() + " $FAKE";
+        } else {
+          document.getElementById("token-amount").value = "0 $FAKE";
+        }
+      }
+
+      // Check if MetaMask is installed
+      function isMetaMaskInstalled() {
+        return (
+          typeof window.ethereum !== "undefined" && window.ethereum.isMetaMask
+        );
+      }
+
+      // Connect to MetaMask wallet
+      async function connectWallet() {
+        if (!isMetaMaskInstalled()) {
+          alert(
+            "MetaMask não está instalado! Por favor instale a extensão primeiro."
+          );
+          window.open("https://metamask.io/download.html", "_blank");
+          return;
+        }
+
+        try {
+          // Request account access
+          const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts",
+          });
+          currentAccount = accounts[0];
+          updateWalletButton();
+
+          // Check if connected to BSC network
+          await checkNetwork();
+        } catch (error) {
+          console.error("Error connecting to MetaMask:", error);
+          alert("Erro ao conectar à MetaMask: " + error.message);
+        }
+      }
+
+      // Check if connected to BSC network
+      async function checkNetwork() {
+        const chainId = await window.ethereum.request({
+          method: "eth_chainId",
+        });
+
+        if (chainId !== BSC_CHAIN_ID) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_switchEthereumChain",
+              params: [{ chainId: BSC_CHAIN_ID }],
+            });
+          } catch (switchError) {
+            // This error code indicates that the chain has not been added to MetaMask
+            if (switchError.code === 4902) {
+              try {
+                await window.ethereum.request({
+                  method: "wallet_addEthereumChain",
+                  params: [
+                    {
+                      chainId: BSC_CHAIN_ID,
+                      chainName: "Binance Smart Chain",
+                      nativeCurrency: {
+                        name: "BNB",
+                        symbol: "bnb",
+                        decimals: 18,
+                      },
+                      rpcUrls: [BSC_RPC_URL],
+                      blockExplorerUrls: ["https://bscscan.com/"],
+                    },
+                  ],
+                });
+              } catch (addError) {
+                console.error("Error adding BSC network:", addError);
+                alert(
+                  "Erro ao adicionar a rede Binance Smart Chain ao MetaMask"
+                );
+              }
+            } else {
+              console.error("Error switching to BSC network:", switchError);
+              alert("Erro ao mudar para a rede Binance Smart Chain");
+            }
+          }
+        }
+      }
+
+      // Update wallet button after connection
+      function updateWalletButton() {
+        const walletBtn = document.getElementById("connectWalletBtn");
+        if (currentAccount) {
+          walletBtn.classList.add("wallet-connected");
+          walletBtn.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span class="wallet-address">${currentAccount.substring(
+              0,
+              6
+            )}...${currentAccount.substring(38)}</span>
+          `;
+        } else {
+          walletBtn.classList.remove("wallet-connected");
+          walletBtn.innerHTML = `
+            <i class="fas fa-wallet"></i>
+            <span class="content-pt">Conectar Carteira</span>
+            <span class="content-en">Connect Wallet</span>
+          `;
+        }
+      }
+
+      // Show modal with custom message
+      function showModal(title, message, isSuccess = false, txHash = null) {
+        const modal = document.getElementById("transactionModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalMessage = document.getElementById("modalMessage");
+        const txIcon = document.querySelector(".tx-icon");
+        const viewTxBtn = document.getElementById("viewTxBtn");
+
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+
+        // Update icon based on status
+        txIcon.className = "tx-icon " + (isSuccess ? "tx-success" : "tx-error");
+        txIcon.innerHTML = `<i class="fas fa-${
+          isSuccess ? "check-circle" : "exclamation-circle"
+        }"></i>`;
+
+        // Show/hide view transaction button
+        if (txHash) {
+          currentTxHash = txHash;
+          viewTxBtn.style.display = "block";
+        } else {
+          viewTxBtn.style.display = "none";
+        }
+
+        modal.style.display = "flex";
+      }
+
+      // Close modal
+      function closeModal() {
+        const modal = document.getElementById("transactionModal");
+        modal.style.display = "none";
+      }
+
+      // View transaction on BscScan
+      function viewOnBscScan() {
+        if (currentTxHash) {
+          window.open(`https://bscscan.com/tx/${currentTxHash}`, "_blank");
+        }
+      }
+
+      // Buy tokens function with MetaMask integration
+      async function buyTokens() {
+        const bnbAmount = parseFloat(
+          document.getElementById("bnb-amount").value
+        );
+
+        if (isNaN(bnbAmount) || bnbAmount <= 0) {
+          alert("Por favor, insira um valor válido de BNB");
+          return;
+        }
+
+        if (!currentAccount) {
+          alert("Por favor, conecte sua carteira MetaMask primeiro");
+          await connectWallet();
+          return;
+        }
+
+        try {
+          // Show transaction modal
+          showModal(
+            "Transação em Andamento",
+            "Aguardando confirmação da transação...",
+            false
+          );
+
+          // Convert BNB amount to wei (1 BNB = 10^18 wei)
+          const weiAmount = (bnbAmount * 1e18).toString(16);
+
+          // Send transaction to the specified contract address
+          const txHash = await window.ethereum.request({
+            method: "eth_sendTransaction",
+            params: [
+              {
+                from: currentAccount,
+                to: TOKEN_CONTRACT, // Sending to the contract address
+                value: `0x${weiAmount}`,
+                // Removed gas and gasPrice parameters to let MetaMask calculate them
+              },
+            ],
+          });
+
+          currentTxHash = txHash;
+
+          // Update modal to show success
+          showModal(
+            "Transação Enviada",
+            `Sua transação foi enviada com sucesso! Hash da transação: ${txHash}`,
+            true,
+            txHash
+          );
+
+          // You might want to listen for transaction confirmation here
+          // and update the UI accordingly
+        } catch (error) {
+          console.error("Transaction error:", error);
+          showModal(
+            "Erro na Transação",
+            `Ocorreu um erro: ${error.message}`,
+            false
+          );
+        }
+      }
+
       // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
         createFloatingCoins();
 
         // Typing effect on title
         const title = document.querySelector("main h1 .content-pt");
-        const originalText = title.textContent;
-        title.textContent = "";
+        if (title) {
+          const originalText = title.textContent;
+          title.textContent = "";
 
-        let i = 0;
-        const typingEffect = setInterval(() => {
-          if (i < originalText.length) {
-            title.textContent += originalText.charAt(i);
-            i++;
-          } else {
-            clearInterval(typingEffect);
-          }
-        }, 50);
+          let i = 0;
+          const typingEffect = setInterval(() => {
+            if (i < originalText.length) {
+              title.textContent += originalText.charAt(i);
+              i++;
+            } else {
+              clearInterval(typingEffect);
+            }
+          }, 50);
+        }
+
+        // Listen for account changes
+        if (isMetaMaskInstalled()) {
+          window.ethereum.on("accountsChanged", (accounts) => {
+            currentAccount = accounts.length > 0 ? accounts[0] : null;
+            updateWalletButton();
+          });
+
+          // Listen for chain changes
+          window.ethereum.on("chainChanged", (chainId) => {
+            if (chainId !== BSC_CHAIN_ID) {
+              alert("Por favor, mude para a rede Binance Smart Chain (BSC)");
+            }
+          });
+
+          // Try to connect automatically if already connected
+          window.ethereum
+            .request({ method: "eth_accounts" })
+            .then((accounts) => {
+              if (accounts.length > 0) {
+                currentAccount = accounts[0];
+                updateWalletButton();
+                checkNetwork();
+              }
+            })
+            .catch(console.error);
+        }
       });
     </script>
   </body>
