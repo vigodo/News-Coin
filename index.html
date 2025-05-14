@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Coin - Quanto mais loucura, mais valor</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@walletconnect/ethereum-provider@2.4.0/dist/umd/index.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -29,8 +30,7 @@
       }
 
       .logo-animation {
-        animation: float 3s ease-in-out infinite,
-          moveRight 15s linear infinite alternate;
+        animation: float 3s ease-in-out infinite;
       }
 
       @keyframes float {
@@ -40,15 +40,6 @@
         }
         50% {
           transform: translateY(-10px);
-        }
-      }
-
-      @keyframes moveRight {
-        0% {
-          transform: translateX(-20px);
-        }
-        100% {
-          transform: translateX(20px);
         }
       }
 
@@ -297,6 +288,9 @@
         background: rgba(253, 241, 220, 0.9);
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 100;
       }
 
       .main-container {
@@ -353,6 +347,8 @@
         border-radius: 8px;
         padding: 15px;
         position: relative;
+        word-break: break-all;
+        overflow-wrap: break-word;
       }
 
       .copy-btn {
@@ -605,10 +601,182 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Wallet Connect Modal */
+      .wallet-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .wallet-modal-content {
+        background-color: white;
+        padding: 24px;
+        border-radius: 12px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .wallet-option {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 1px solid #e5e7eb;
+      }
+
+      .wallet-option:hover {
+        background-color: #f3f4f6;
+        transform: translateY(-2px);
+      }
+
+      .wallet-icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 12px;
+      }
+
+      .wallet-name {
+        font-weight: 600;
+      }
+
+      /* Countdown Timer */
+      .countdown-container {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 500px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .countdown-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+      }
+
+      .countdown-timer {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 70px;
+      }
+
+      .countdown-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #f59e0b;
+        background: rgba(245, 158, 11, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .countdown-label {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 5px;
+        text-transform: uppercase;
+      }
+
+      /* BNB Raised */
+      .bnb-raised {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 500px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .bnb-raised-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .bnb-raised-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #f59e0b;
+      }
+
+      /* Sticky Logo */
+      .sticky-logo {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        transition: all 0.3s ease;
+      }
+
+      .sticky-logo img {
+        width: 40px;
+        height: 40px;
+      }
+
+      /* Start Presale Button */
+      .start-presale-btn {
+        background: linear-gradient(to right, #10b981, #10b981);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+        box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+      }
+
+      .start-presale-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(16, 185, 129, 0.4);
+      }
     </style>
   </head>
   <body class="portuguese">
     <div class="floating-coins" id="floatingCoins"></div>
+
+    <!-- Sticky Logo -->
+    <div class="sticky-logo" id="stickyLogo">
+      <img
+        src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
+        alt="News Coin Logo"
+      />
+    </div>
 
     <!-- Transaction Modal -->
     <div class="modal" id="transactionModal">
@@ -639,6 +807,39 @@
       </div>
     </div>
 
+    <!-- Wallet Connection Modal -->
+    <div class="wallet-modal" id="walletModal">
+      <div class="wallet-modal-content">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-xl font-bold">
+            <span class="content-pt">Conectar Carteira</span>
+            <span class="content-en">Connect Wallet</span>
+          </h2>
+          <button class="modal-close" onclick="closeWalletModal()">
+            &times;
+          </button>
+        </div>
+
+        <div class="wallet-option" onclick="connectMetaMask()">
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/metamask-2728406-2261817.png"
+            class="wallet-icon"
+            alt="MetaMask"
+          />
+          <span class="wallet-name">MetaMask</span>
+        </div>
+
+        <div class="wallet-option" onclick="connectTrustWallet()">
+          <img
+            src="https://trustwallet.com/assets/images/media/assets/trust_platform.svg"
+            class="wallet-icon"
+            alt="Trust Wallet"
+          />
+          <span class="wallet-name">Trust Wallet (via WalletConnect)</span>
+        </div>
+      </div>
+    </div>
+
     <!-- Language Switcher -->
     <div class="language-switcher">
       <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
@@ -648,13 +849,14 @@
     </div>
 
     <header
-      class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50"
+      class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center"
     >
       <div class="flex items-center mb-4 md:mb-0">
         <img
           src="https://github.com/Murilolgm/news---coin/blob/main/file_00000000c3606230904dffe17251dfdd_conversation_id=67fc20d7-d70c-8004-838c-62fd26eff16d&message_id=741f0d58-877f-4651-868c-d070abf28fd0.png?raw=true"
           alt="News Coin Logo"
           class="h-10 mr-4 logo-animation"
+          id="mainLogo"
         />
         <h1 class="text-xl font-bold hidden md:block">NEWS COIN</h1>
       </div>
@@ -718,7 +920,7 @@
         <button
           class="wallet-btn"
           id="connectWalletBtn"
-          onclick="connectWallet()"
+          onclick="showWalletModal()"
         >
           <i class="fas fa-wallet"></i>
           <span class="content-pt">Conectar Carteira</span>
@@ -736,6 +938,53 @@
           alt="News Coin Mascot"
           class="w-48 md:w-64 mx-auto mb-8 logo-animation"
         />
+
+        <!-- Countdown Timer -->
+        <div class="countdown-container">
+          <div class="countdown-title content-pt">Pré-venda começa em:</div>
+          <div class="countdown-title content-en">Presale starts in:</div>
+          <div class="countdown-timer">
+            <div class="countdown-item">
+              <div class="countdown-value" id="countdown-days">00</div>
+              <div class="countdown-label content-pt">Dias</div>
+              <div class="countdown-label content-en">Days</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="countdown-hours">00</div>
+              <div class="countdown-label content-pt">Horas</div>
+              <div class="countdown-label content-en">Hours</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="countdown-minutes">00</div>
+              <div class="countdown-label content-pt">Minutos</div>
+              <div class="countdown-label content-en">Minutes</div>
+            </div>
+            <div class="countdown-item">
+              <div class="countdown-value" id="countdown-seconds">00</div>
+              <div class="countdown-label content-pt">Segundos</div>
+              <div class="countdown-label content-en">Seconds</div>
+            </div>
+          </div>
+          <button
+            class="start-presale-btn"
+            id="startPresaleBtn"
+            onclick="startPresale()"
+          >
+            <span class="content-pt">INICIAR PRÉ-VENDA</span>
+            <span class="content-en">START PRESALE</span>
+          </button>
+        </div>
+
+        <!-- BNB Raised -->
+        <div class="bnb-raised">
+          <div class="bnb-raised-title content-pt">
+            Total arrecadado na pré-venda:
+          </div>
+          <div class="bnb-raised-title content-en">
+            Total raised in presale:
+          </div>
+          <div class="bnb-raised-value" id="bnb-raised-value">0.00 BNB</div>
+        </div>
 
         <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
           <span class="content-pt">O seu radar diário do universo cripto</span>
@@ -828,7 +1077,7 @@
 
             <div class="contract-box mb-6">
               <code id="contract-address"
-                >0x4B85a45c1B75fa46464C73c2D5755239A69927f6</code
+                >0x125F0Ac9884bE2F6e826469add695fbFDE2DeD79</code
               >
               <button
                 class="copy-btn"
@@ -845,7 +1094,7 @@
 
             <div class="contract-box mb-6">
               <code id="receive-address"
-                >0x4B85a45c1B75fa46464C73c2D5755239A69927f6</code
+                >0xAB198B0E7648639CfDc7fc6487D63cDc784aC475</code
               >
               <button
                 class="copy-btn"
@@ -860,7 +1109,7 @@
                 <span class="content-pt">Taxa de Conversão:</span>
                 <span class="content-en">Conversion Rate:</span>
               </p>
-              <p class="text-2xl font-bold">1 BNB = 1,000,000 $FAKE</p>
+              <p class="text-2xl font-bold">1 BNB = 800,000 $FAKE</p>
             </div>
 
             <p class="info-text content-pt">
@@ -876,7 +1125,7 @@
           <div>
             <div class="qr-code mb-6">
               <img
-                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0x4B85a45c1B75fa46464C73c2D5755239A69927f6"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xAB198B0E7648639CfDc7fc6487D63cDc784aC475"
                 alt="QR Code"
               />
             </div>
@@ -1108,15 +1357,31 @@
 
     <script>
       // Contract and wallet addresses
-      const TOKEN_CONTRACT = "0x4B85a45c1B75fa46464C73c2D5755239A69927f6";
-      const RECEIVING_WALLET = "0x4B85a45c1B75fa46464C73c2D5755239A69927f6";
-      const CONVERSION_RATE = 1000000; // 1 BNB = 1,000,000 tokens
+      const TOKEN_CONTRACT = "0x125F0Ac9884bE2F6e826469add695fbFDE2DeD79";
+      const RECEIVING_WALLET = "0xAB198B0E7648639CfDc7fc6487D63cDc784aC475";
+      const CONVERSION_RATE = 800000; // 1 BNB = 800,000 tokens
       const BSC_CHAIN_ID = "0x38"; // 56 in decimal
       const BSC_RPC_URL = "https://bsc-dataseed.binance.org/";
+
+      // WalletConnect configuration
+      const WALLET_CONNECT_PROJECT_ID = "YOUR_WALLET_CONNECT_PROJECT_ID"; // Replace with your WalletConnect project ID
+      let walletConnectProvider = null;
 
       // Global variables
       let currentAccount = null;
       let currentTxHash = null;
+      let isWalletConnect = false;
+      let presaleStarted = false;
+      let presaleEndDate = new Date();
+
+      // Initialize presale end date (30 days from now)
+      function initializePresale() {
+        presaleEndDate = new Date();
+        presaleEndDate.setDate(presaleEndDate.getDate() + 30);
+        presaleStarted = true;
+        document.getElementById("startPresaleBtn").style.display = "none";
+        updateCountdown();
+      }
 
       function toggleLanguage() {
         document.body.classList.toggle("english");
@@ -1190,8 +1455,20 @@
         );
       }
 
+      // Show wallet connection modal
+      function showWalletModal() {
+        document.getElementById("walletModal").style.display = "flex";
+      }
+
+      // Close wallet connection modal
+      function closeWalletModal() {
+        document.getElementById("walletModal").style.display = "none";
+      }
+
       // Connect to MetaMask wallet
-      async function connectWallet() {
+      async function connectMetaMask() {
+        closeWalletModal();
+
         if (!isMetaMaskInstalled()) {
           alert(
             "MetaMask não está instalado! Por favor instale a extensão primeiro."
@@ -1206,6 +1483,7 @@
             method: "eth_requestAccounts",
           });
           currentAccount = accounts[0];
+          isWalletConnect = false;
           updateWalletButton();
 
           // Check if connected to BSC network
@@ -1216,38 +1494,127 @@
         }
       }
 
+      // Connect to Trust Wallet via WalletConnect
+      async function connectTrustWallet() {
+        closeWalletModal();
+
+        try {
+          // Initialize WalletConnect provider
+          walletConnectProvider = new EthereumProvider({
+            projectId: WALLET_CONNECT_PROJECT_ID,
+            chains: [56], // BSC chain ID
+            showQrModal: true,
+            qrModalOptions: {
+              themeVariables: {
+                "--wcm-z-index": "9999",
+              },
+            },
+          });
+
+          // Enable session (triggers QR code modal)
+          await walletConnectProvider.connect();
+
+          // Get accounts
+          const accounts = await walletConnectProvider.request({
+            method: "eth_accounts",
+          });
+
+          if (accounts.length > 0) {
+            currentAccount = accounts[0];
+            isWalletConnect = true;
+            updateWalletButton();
+
+            // Subscribe to events
+            walletConnectProvider.on("accountsChanged", (accounts) => {
+              currentAccount = accounts.length > 0 ? accounts[0] : null;
+              updateWalletButton();
+            });
+
+            walletConnectProvider.on("chainChanged", (chainId) => {
+              if (parseInt(chainId) !== 56) {
+                alert("Por favor, mude para a rede Binance Smart Chain (BSC)");
+              }
+            });
+
+            walletConnectProvider.on("disconnect", () => {
+              currentAccount = null;
+              updateWalletButton();
+            });
+          }
+        } catch (error) {
+          console.error("Error connecting with WalletConnect:", error);
+          alert("Erro ao conectar com WalletConnect: " + error.message);
+        }
+      }
+
       // Check if connected to BSC network
       async function checkNetwork() {
-        const chainId = await window.ethereum.request({
-          method: "eth_chainId",
-        });
+        let chainId;
 
-        if (chainId !== BSC_CHAIN_ID) {
+        if (isWalletConnect && walletConnectProvider) {
+          chainId = await walletConnectProvider.request({
+            method: "eth_chainId",
+          });
+        } else if (window.ethereum) {
+          chainId = await window.ethereum.request({
+            method: "eth_chainId",
+          });
+        } else {
+          return;
+        }
+
+        if (parseInt(chainId) !== 56) {
           try {
-            await window.ethereum.request({
-              method: "wallet_switchEthereumChain",
-              params: [{ chainId: BSC_CHAIN_ID }],
-            });
+            if (isWalletConnect && walletConnectProvider) {
+              await walletConnectProvider.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: BSC_CHAIN_ID }],
+              });
+            } else if (window.ethereum) {
+              await window.ethereum.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: BSC_CHAIN_ID }],
+              });
+            }
           } catch (switchError) {
             // This error code indicates that the chain has not been added to MetaMask
             if (switchError.code === 4902) {
               try {
-                await window.ethereum.request({
-                  method: "wallet_addEthereumChain",
-                  params: [
-                    {
-                      chainId: BSC_CHAIN_ID,
-                      chainName: "Binance Smart Chain",
-                      nativeCurrency: {
-                        name: "BNB",
-                        symbol: "bnb",
-                        decimals: 18,
+                if (isWalletConnect && walletConnectProvider) {
+                  await walletConnectProvider.request({
+                    method: "wallet_addEthereumChain",
+                    params: [
+                      {
+                        chainId: BSC_CHAIN_ID,
+                        chainName: "Binance Smart Chain",
+                        nativeCurrency: {
+                          name: "BNB",
+                          symbol: "bnb",
+                          decimals: 18,
+                        },
+                        rpcUrls: [BSC_RPC_URL],
+                        blockExplorerUrls: ["https://bscscan.com/"],
                       },
-                      rpcUrls: [BSC_RPC_URL],
-                      blockExplorerUrls: ["https://bscscan.com/"],
-                    },
-                  ],
-                });
+                    ],
+                  });
+                } else if (window.ethereum) {
+                  await window.ethereum.request({
+                    method: "wallet_addEthereumChain",
+                    params: [
+                      {
+                        chainId: BSC_CHAIN_ID,
+                        chainName: "Binance Smart Chain",
+                        nativeCurrency: {
+                          name: "BNB",
+                          symbol: "bnb",
+                          decimals: 18,
+                        },
+                        rpcUrls: [BSC_RPC_URL],
+                        blockExplorerUrls: ["https://bscscan.com/"],
+                      },
+                    ],
+                  });
+                }
               } catch (addError) {
                 console.error("Error adding BSC network:", addError);
                 alert(
@@ -1337,8 +1704,8 @@
         }
 
         if (!currentAccount) {
-          alert("Por favor, conecte sua carteira MetaMask primeiro");
-          await connectWallet();
+          alert("Por favor, conecte sua carteira primeiro");
+          showWalletModal();
           return;
         }
 
@@ -1353,20 +1720,41 @@
           // Convert BNB amount to wei (1 BNB = 10^18 wei)
           const weiAmount = (bnbAmount * 1e18).toString(16);
 
-          // Send transaction to the specified contract address
-          const txHash = await window.ethereum.request({
-            method: "eth_sendTransaction",
-            params: [
-              {
-                from: currentAccount,
-                to: TOKEN_CONTRACT, // Sending to the contract address
-                value: `0x${weiAmount}`,
-                // Removed gas and gasPrice parameters to let MetaMask calculate them
-              },
-            ],
-          });
+          let txHash;
+
+          if (isWalletConnect && walletConnectProvider) {
+            // Send transaction via WalletConnect
+            txHash = await walletConnectProvider.request({
+              method: "eth_sendTransaction",
+              params: [
+                {
+                  from: currentAccount,
+                  to: TOKEN_CONTRACT,
+                  value: `0x${weiAmount}`,
+                  data: "0x", // Empty data for simple BNB transfer
+                },
+              ],
+            });
+          } else {
+            // Send transaction via MetaMask
+            txHash = await window.ethereum.request({
+              method: "eth_sendTransaction",
+              params: [
+                {
+                  from: currentAccount,
+                  to: TOKEN_CONTRACT,
+                  value: `0x${weiAmount}`,
+                  data: "0x", // Empty data for simple BNB transfer
+                },
+              ],
+            });
+          }
 
           currentTxHash = txHash;
+
+          // Update BNB raised (simulated)
+          bnbRaised += bnbAmount;
+          updateBnbRaised();
 
           // Update modal to show success
           showModal(
@@ -1375,9 +1763,6 @@
             true,
             txHash
           );
-
-          // You might want to listen for transaction confirmation here
-          // and update the UI accordingly
         } catch (error) {
           console.error("Transaction error:", error);
           showModal(
@@ -1388,9 +1773,85 @@
         }
       }
 
+      // Update BNB raised display
+      function updateBnbRaised() {
+        document.getElementById("bnb-raised-value").textContent =
+          bnbRaised.toFixed(2) + " BNB";
+      }
+
+      // Countdown timer for presale
+      function updateCountdown() {
+        const now = new Date();
+        const diff = presaleStarted
+          ? presaleEndDate - now
+          : new Date(new Date().setDate(new Date().getDate() + 30)) - now;
+
+        if (diff <= 0) {
+          // Presale has ended
+          document.getElementById("countdown-days").textContent = "00";
+          document.getElementById("countdown-hours").textContent = "00";
+          document.getElementById("countdown-minutes").textContent = "00";
+          document.getElementById("countdown-seconds").textContent = "00";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown-days").textContent = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("countdown-hours").textContent = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("countdown-minutes").textContent = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("countdown-seconds").textContent = seconds
+          .toString()
+          .padStart(2, "0");
+      }
+
+      // Handle sticky logo on scroll
+      function handleScroll() {
+        const stickyLogo = document.getElementById("stickyLogo");
+        const mainLogo = document.getElementById("mainLogo");
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 100) {
+          stickyLogo.style.display = "block";
+          mainLogo.style.opacity = "0";
+        } else {
+          stickyLogo.style.display = "none";
+          mainLogo.style.opacity = "1";
+        }
+      }
+
+      // Start presale function
+      function startPresale() {
+        initializePresale();
+        showModal(
+          "Pré-venda Iniciada",
+          "A pré-venda foi iniciada com sucesso! O contador regressivo de 30 dias começou.",
+          true
+        );
+      }
+
       // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
         createFloatingCoins();
+        updateCountdown();
+        updateBnbRaised();
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Listen for scroll events
+        window.addEventListener("scroll", handleScroll);
 
         // Typing effect on title
         const title = document.querySelector("main h1 .content-pt");
@@ -1409,25 +1870,27 @@
           }, 50);
         }
 
-        // Listen for account changes
+        // Listen for account changes (MetaMask)
         if (isMetaMaskInstalled()) {
           window.ethereum.on("accountsChanged", (accounts) => {
-            currentAccount = accounts.length > 0 ? accounts[0] : null;
-            updateWalletButton();
+            if (!isWalletConnect) {
+              currentAccount = accounts.length > 0 ? accounts[0] : null;
+              updateWalletButton();
+            }
           });
 
-          // Listen for chain changes
+          // Listen for chain changes (MetaMask)
           window.ethereum.on("chainChanged", (chainId) => {
-            if (chainId !== BSC_CHAIN_ID) {
+            if (!isWalletConnect && chainId !== BSC_CHAIN_ID) {
               alert("Por favor, mude para a rede Binance Smart Chain (BSC)");
             }
           });
 
-          // Try to connect automatically if already connected
+          // Try to connect automatically if already connected (MetaMask)
           window.ethereum
             .request({ method: "eth_accounts" })
             .then((accounts) => {
-              if (accounts.length > 0) {
+              if (accounts.length > 0 && !isWalletConnect) {
                 currentAccount = accounts[0];
                 updateWalletButton();
                 checkNetwork();
