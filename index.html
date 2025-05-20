@@ -1386,13 +1386,29 @@
 
       // Initialize presale end date (40 days from launch date)
       function initializePresale() {
-        // Set launch date (you can change this to your actual launch date)
-        const launchDate = new Date("2023-11-01"); // Example launch date
+        // Set launch date to current date when presale starts
+        const launchDate = new Date();
         presaleEndDate = new Date(launchDate);
         presaleEndDate.setDate(presaleEndDate.getDate() + 40);
         presaleStarted = true;
         document.getElementById("startPresaleBtn").style.display = "none";
         updateCountdown();
+        
+        // Save presale state to localStorage
+        localStorage.setItem('presaleStarted', 'true');
+        localStorage.setItem('presaleEndDate', presaleEndDate.getTime());
+      }
+
+      // Check if presale was already started
+      function checkPresaleState() {
+        const started = localStorage.getItem('presaleStarted');
+        const endDate = localStorage.getItem('presaleEndDate');
+        
+        if (started === 'true' && endDate) {
+          presaleStarted = true;
+          presaleEndDate = new Date(parseInt(endDate));
+          document.getElementById("startPresaleBtn").style.display = "none";
+        }
       }
 
       function toggleLanguage() {
@@ -1904,6 +1920,9 @@
 
       // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
+        // Check if presale was already started
+        checkPresaleState();
+        
         createFloatingCoins();
         updateCountdown();
         updateBnbRaised();
