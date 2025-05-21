@@ -950,8 +950,8 @@
 
         <!-- Countdown Timer -->
         <div class="countdown-container">
-          <div class="countdown-title content-pt">Pré-venda começa em:</div>
-          <div class="countdown-title content-en">Presale starts in:</div>
+          <div class="countdown-title content-pt">Pré-venda termina em:</div>
+          <div class="countdown-title content-en">Presale ends in:</div>
           <div class="countdown-timer">
             <div class="countdown-item">
               <div class="countdown-value" id="countdown-days">00</div>
@@ -1178,7 +1178,7 @@
             </button>
 
             <p class="info-text mt-4 content-pt">
-              * Transações são processadas automaticamente na rede BSC.
+              * Transações são processadas automatically na rede BSC.
             </p>
             <p class="info-text mt-4 content-en">
               * Transactions are automatically processed on BSC network.
@@ -1393,21 +1393,25 @@
         presaleStarted = true;
         document.getElementById("startPresaleBtn").style.display = "none";
         updateCountdown();
-        
+
         // Save presale state to localStorage
-        localStorage.setItem('presaleStarted', 'true');
-        localStorage.setItem('presaleEndDate', presaleEndDate.getTime());
+        localStorage.setItem("presaleStarted", "true");
+        localStorage.setItem("presaleEndDate", presaleEndDate.getTime());
       }
 
       // Check if presale was already started
       function checkPresaleState() {
-        const started = localStorage.getItem('presaleStarted');
-        const endDate = localStorage.getItem('presaleEndDate');
-        
-        if (started === 'true' && endDate) {
+        const started = localStorage.getItem("presaleStarted");
+        const endDate = localStorage.getItem("presaleEndDate");
+
+        if (started === "true" && endDate) {
           presaleStarted = true;
           presaleEndDate = new Date(parseInt(endDate));
           document.getElementById("startPresaleBtn").style.display = "none";
+        } else {
+          // If presale hasn't started yet, set a default future date (but don't save to localStorage)
+          presaleEndDate = new Date();
+          presaleEndDate.setDate(presaleEndDate.getDate() + 40);
         }
       }
 
@@ -1859,9 +1863,7 @@
       // Countdown timer for presale
       function updateCountdown() {
         const now = new Date();
-        const diff = presaleStarted
-          ? presaleEndDate - now
-          : new Date(new Date().setDate(new Date().getDate() + 40)) - now;
+        const diff = presaleEndDate - now;
 
         if (diff <= 0) {
           // Presale has ended
@@ -1922,7 +1924,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         // Check if presale was already started
         checkPresaleState();
-        
+
         createFloatingCoins();
         updateCountdown();
         updateBnbRaised();
