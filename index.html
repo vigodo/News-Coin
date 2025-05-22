@@ -651,81 +651,6 @@
         font-weight: 600;
       }
 
-      /* Countdown Timer */
-      .countdown-container {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(5px);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 30px auto;
-        max-width: 500px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .countdown-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: #333;
-        text-align: center;
-      }
-
-      .countdown-timer {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      .countdown-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-width: 70px;
-      }
-
-      .countdown-value {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #f59e0b;
-        background: rgba(245, 158, 11, 0.1);
-        border-radius: 8px;
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .countdown-label {
-        font-size: 0.8rem;
-        color: #666;
-        margin-top: 5px;
-        text-transform: uppercase;
-      }
-
-      /* BNB Raised */
-      .bnb-raised {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(5px);
-        border-radius: 12px;
-        padding: 20px;
-        margin: 30px auto;
-        max-width: 500px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-
-      .bnb-raised-title {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #333;
-      }
-
-      .bnb-raised-value {
-        font-size: 2rem;
-        font-weight: bold;
-        color: #f59e0b;
-      }
-
       /* Sticky Logo */
       .sticky-logo {
         position: fixed;
@@ -764,6 +689,36 @@
       .start-presale-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 8px rgba(16, 185, 129, 0.4);
+      }
+
+      /* Presale End Date Banner */
+      .presale-end-banner {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(5px);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 30px auto;
+        max-width: 500px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .presale-end-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .presale-end-date {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #f59e0b;
+        background: rgba(245, 158, 11, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        width: 100%;
+        text-align: center;
       }
     </style>
   </head>
@@ -948,51 +903,11 @@
           class="w-48 md:w-64 mx-auto mb-8 logo-animation"
         />
 
-        <!-- Countdown Timer -->
-        <div class="countdown-container">
-          <div class="countdown-title content-pt">Pré-venda termina em:</div>
-          <div class="countdown-title content-en">Presale ends in:</div>
-          <div class="countdown-timer">
-            <div class="countdown-item">
-              <div class="countdown-value" id="countdown-days">00</div>
-              <div class="countdown-label content-pt">Dias</div>
-              <div class="countdown-label content-en">Days</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-value" id="countdown-hours">00</div>
-              <div class="countdown-label content-pt">Horas</div>
-              <div class="countdown-label content-en">Hours</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-value" id="countdown-minutes">00</div>
-              <div class="countdown-label content-pt">Minutos</div>
-              <div class="countdown-label content-en">Minutes</div>
-            </div>
-            <div class="countdown-item">
-              <div class="countdown-value" id="countdown-seconds">00</div>
-              <div class="countdown-label content-pt">Segundos</div>
-              <div class="countdown-label content-en">Seconds</div>
-            </div>
-          </div>
-          <button
-            class="start-presale-btn"
-            id="startPresaleBtn"
-            onclick="startPresale()"
-          >
-            <span class="content-pt">INICIAR PRÉ-VENDA</span>
-            <span class="content-en">START PRESALE</span>
-          </button>
-        </div>
-
-        <!-- BNB Raised -->
-        <div class="bnb-raised">
-          <div class="bnb-raised-title content-pt">
-            Total arrecadado na pré-venda:
-          </div>
-          <div class="bnb-raised-title content-en">
-            Total raised in presale:
-          </div>
-          <div class="bnb-raised-value" id="bnb-raised-value">0.00 BNB</div>
+        <!-- Presale End Date Banner -->
+        <div class="presale-end-banner">
+          <div class="presale-end-title content-pt">Pré-venda termina em:</div>
+          <div class="presale-end-title content-en">Presale ends on:</div>
+          <div class="presale-end-date">30/06/2025</div>
         </div>
 
         <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
@@ -1178,7 +1093,7 @@
             </button>
 
             <p class="info-text mt-4 content-pt">
-              * Transações são processadas automatically na rede BSC.
+              * Transações são processadas automaticamente na rede BSC.
             </p>
             <p class="info-text mt-4 content-en">
               * Transactions are automatically processed on BSC network.
