@@ -401,7 +401,6 @@
       .memecoin-card {
         transition: all 0.3s ease;
         perspective: 1000px;
-        margin-bottom: 2rem;
       }
 
       .memecoin-card-inner {
@@ -466,22 +465,40 @@
       /* Responsive grid with better spacing */
       .memecoin-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 2rem;
+        justify-items: center;
       }
 
       @media (min-width: 768px) {
         .memecoin-grid {
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 2.5rem;
         }
       }
 
       @media (min-width: 1024px) {
         .memecoin-grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 3rem;
         }
+      }
+
+      /* Card specific styles */
+      .memecoin-card {
+        width: 100%;
+        max-width: 320px;
+        height: 380px;
+      }
+
+      .memecoin-card-front {
+        background: rgba(46, 16, 101, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(220, 31, 255, 0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
     </style>
   </head>
@@ -827,7 +844,7 @@
         </h2>
       </div>
 
-      <div class="memecoin-grid">
+      <div class="memecoin-grid gap-x-10 gap-y-14">
         <!-- Trump Card -->
         <div class="memecoin-card">
           <div class="memecoin-card-inner">
@@ -878,31 +895,6 @@
           </div>
         </div>
 
-        <!-- Fartcoin Card -->
-        <div class="memecoin-card">
-          <div class="memecoin-card-inner">
-            <div
-              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
-            >
-              <img
-                src="https://tse3.mm.bing.net/th?id=OIP.9qG8H2FF9vNiGMWljgX4SAHaEO&pid=Api"
-                alt="FARTCOIN"
-                class="memecoin-logo"
-              />
-              <h3 class="text-xl font-bold">Fartcoin (FARTCOIN)</h3>
-              <p class="text-sm mt-2">
-                Memecoin humorística que alcançou US$ 1,47 bilhão em
-                capitalização.
-              </p>
-            </div>
-            <div class="memecoin-card-back">
-              <span class="memecoin-ticker">$FART</span>
-              <span class="memecoin-stats">ATH: $1.47B MCap</span>
-              <span class="memecoin-stats">Launched: 2024</span>
-            </div>
-          </div>
-        </div>
-
         <!-- Wif Card -->
         <div class="memecoin-card">
           <div class="memecoin-card-inner">
@@ -924,55 +916,6 @@
               <span class="memecoin-ticker">$WIF</span>
               <span class="memecoin-stats">ATH: $1.1B MCap</span>
               <span class="memecoin-stats">Launched: 2023</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Popcat Card -->
-        <div class="memecoin-card">
-          <div class="memecoin-card-inner">
-            <div
-              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
-            >
-              <img
-                src="https://tse3.mm.bing.net/th?id=OIP.oRy-16diU0SW_yC6Nw5ijQHaEK&pid=Api"
-                alt="POPCAT"
-                class="memecoin-logo"
-              />
-              <h3 class="text-xl font-bold">Popcat (POPCAT)</h3>
-              <p class="text-sm mt-2">
-                Inspirada no famoso meme do gato, POPCAT atingiu quase US$ 500
-                milhões.
-              </p>
-            </div>
-            <div class="memecoin-card-back">
-              <span class="memecoin-ticker">$POPCAT</span>
-              <span class="memecoin-stats">ATH: $500M MCap</span>
-              <span class="memecoin-stats">Launched: 2024</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bonus Card - Solana Logo -->
-        <div class="memecoin-card">
-          <div class="memecoin-card-inner">
-            <div
-              class="memecoin-card-front feature-box p-6 rounded-xl text-center flex flex-col items-center justify-center"
-            >
-              <img
-                src="https://www.moneytimes.com.br/uploads/2021/10/solana5.jpg"
-                alt="SOLANA"
-                class="memecoin-logo"
-              />
-              <h3 class="text-xl font-bold mt-4">Solana (SOL)</h3>
-              <p class="text-sm mt-2">
-                A blockchain que tornou possível o boom das memecoins.
-              </p>
-            </div>
-            <div class="memecoin-card-back">
-              <span class="memecoin-ticker">$SOL</span>
-              <span class="memecoin-stats">ATH: $80B MCap</span>
-              <span class="memecoin-stats">Launched: 2020</span>
             </div>
           </div>
         </div>
