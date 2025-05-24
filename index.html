@@ -380,6 +380,109 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
+
+      /* Enhanced Memecoins section styles */
+      .memecoin-section-header {
+        position: relative;
+        margin-bottom: 4rem;
+      }
+
+      .memecoin-header-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        margin: 0 auto 2rem;
+        border-radius: 20px;
+        border: 2px solid rgba(220, 31, 255, 0.5);
+        box-shadow: 0 0 30px rgba(0, 255, 163, 0.3);
+        filter: drop-shadow(0 0 10px rgba(220, 31, 255, 0.5));
+      }
+
+      .memecoin-card {
+        transition: all 0.3s ease;
+        perspective: 1000px;
+        margin-bottom: 2rem;
+      }
+
+      .memecoin-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+
+      .memecoin-card:hover .memecoin-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .memecoin-card-front,
+      .memecoin-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .memecoin-card-back {
+        transform: rotateY(180deg);
+        background: linear-gradient(
+          135deg,
+          rgba(220, 31, 255, 0.2),
+          rgba(0, 255, 163, 0.2)
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .memecoin-logo {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin: 0 auto 1rem;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        padding: 4px;
+        background: rgba(30, 0, 62, 0.7);
+      }
+
+      .memecoin-ticker {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: var(--accent);
+        margin-top: 0.5rem;
+      }
+
+      .memecoin-stats {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        color: var(--accent);
+      }
+
+      /* Responsive grid with better spacing */
+      .memecoin-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+      }
+
+      @media (min-width: 768px) {
+        .memecoin-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .memecoin-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 3rem;
+        }
+      }
     </style>
   </head>
   <body class="portuguese">
@@ -398,8 +501,8 @@
     >
       <div class="flex items-center mb-4 md:mb-0">
         <img
-          src="https://cryptologos.cc/logos/solana-sol-logo.png"
-          alt="Solana Logo"
+          src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-ff10-61f8-836a-76c7854710e4/raw?se=2025-05-24T22%3A56%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=5697a073-b333-5e39-8b2c-3ed8b9380f0a&skoid=71e8fa5c-90a9-4c17-827b-14c3005164d6&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T11%3A02%3A54Z&ske=2025-05-25T11%3A02%3A54Z&sks=b&skv=2024-08-04&sig=nvKRxZLr1Jx/Zv/VezHB1zI4mPxFXRBMa6T2QIj%2BcA8%3D"
+          alt="NewsCoin"
           class="h-10 mr-4 logo-animation"
         />
         <h1 class="text-xl font-bold hidden md:block solana-gradient-text">
@@ -467,7 +570,8 @@
           href=""
           class="buy-button btn-hover-effect px-4 py-2 rounded-lg font-bold bg-gradient-to-r from-solana-teal to-solana-purple text-white border-none pulse"
         >
-          Comprar $NSC
+          <span class="content-pt">Comprar $NSC</span>
+          <span class="content-en">Buy $NSC</span>
         </a>
       </div>
     </header>
@@ -477,7 +581,7 @@
     >
       <div class="max-w-4xl mx-auto">
         <img
-          src="https://web.telegram.org/d33e65eb-56ea-4296-a322-babc0a8a1256"
+          src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-ff10-61f8-836a-76c7854710e4/raw?se=2025-05-24T22%3A56%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=5697a073-b333-5e39-8b2c-3ed8b9380f0a&skoid=71e8fa5c-90a9-4c17-827b-14c3005164d6&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T11%3A02%3A54Z&ske=2025-05-25T11%3A02%3A54Z&sks=b&skv=2024-08-04&sig=nvKRxZLr1Jx/Zv/VezHB1zI4mPxFXRBMa6T2QIj%2BcA8%3D"
           alt="NewsCoin"
           class="w-48 md:w-64 mx-auto mb-8 logo-animation"
         />
@@ -500,7 +604,8 @@
           href="https://x.com/NewscoinOf"
           class="nsc-button btn-hover-effect px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-solana-purple to-solana-teal text-white border-none transform hover:scale-105 transition-all duration-300 shadow-lg"
         >
-          Dê um NSC
+          <span class="content-pt">Dê um NSC</span>
+          <span class="content-en">Give an NSC</span>
         </a>
 
         <div class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
@@ -587,7 +692,7 @@
               Lançamento do Whitepaper
             </h3>
             <h3 class="text-xl font-bold mb-2 content-en text-solana-teal">
-              Whiteppaper Launch
+              Whitepaper Launch
             </h3>
             <p class="text-solana-light content-pt">
               Documento oficial explicando a visão e tecnologia por trás da News
@@ -695,44 +800,180 @@
             >
             <span class="text-solana-light"> 1,000,000,000 $NSC</span>
           </li>
-          <li class="tokenomics-item">
-            <strong class="text-lg content-pt text-solana-teal"
-              >Distribuição:</strong
-            >
-            <strong class="text-lg content-en text-solana-teal"
-              >Distribution:</strong
-            >
-            <span class="content-pt text-solana-light">
-              80% ICO, 5% parcerias, 15% equipe (dividido entre 5
-              desenvolvedores com 3% cada)
-            </span>
-            <span class="content-en text-solana-light">
-              80% ICO, 5% partnerships, 15% team (divided among 5 developers
-              with 3% each)
-            </span>
-          </li>
         </ul>
+      </div>
+    </section>
 
-        <div class="mt-8">
-          <h3 class="text-xl font-bold mb-4 content-pt text-solana-teal">
-            Alocação de Tokens
-          </h3>
-          <h3 class="text-xl font-bold mb-4 content-en text-solana-teal">
-            Token Allocation
-          </h3>
-          <div class="w-full bg-solana-dark rounded-full h-4">
+    <div class="section-divider"></div>
+
+    <!-- Enhanced Memecoins Section -->
+    <section
+      id="memecoins"
+      class="py-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto"
+    >
+      <div class="memecoin-section-header">
+        <!-- Decorative header image -->
+        <img
+          src="https://livecoins.com.br/wp-content/uploads/2022/01/solana.jpg.webp"
+          alt="Solana Memecoins Explosion"
+          class="memecoin-header-image"
+        />
+
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text solana-gradient-text"
+        >
+          <span class="content-pt">Memecoins que Explodiram na Solana</span>
+          <span class="content-en">Meme Coins that Boomed on Solana</span>
+        </h2>
+      </div>
+
+      <div class="memecoin-grid">
+        <!-- Trump Card -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
             <div
-              class="bg-gradient-to-r from-solana-purple to-solana-teal h-4 rounded-full"
-              style="width: 70%"
-            ></div>
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
+            >
+              <img
+                src="https://s2-valor.glbimg.com/IQiXZoAJRgcPdTDyxX-wX9GVAUA=/0x0:732x864/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/F/4/TF6WugQbGrQcz1Pw7vUQ/strump.jpg"
+                alt="TRUMP"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold">Official Trump (TRUMP)</h3>
+              <p class="text-sm mt-2">
+                Inspirada em Donald Trump, atingiu mais de US$ 2,6 bilhões de
+                marketcap.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$TRUMP</span>
+              <span class="memecoin-stats">ATH: $2.6B MCap</span>
+              <span class="memecoin-stats">Launched: 2024</span>
+            </div>
           </div>
-          <div class="flex justify-between mt-2 text-sm text-solana-light">
-            <span class="content-pt">ICO (80%)</span>
-            <span class="content-en">ICO (80%)</span>
-            <span class="content-pt">Parcerias (5%)</span>
-            <span class="content-en">Partnerships (5%)</span>
-            <span class="content-pt">Equipe (15%)</span>
-            <span class="content-en">Team (15%)</span>
+        </div>
+
+        <!-- Bonk Card -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
+            <div
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
+            >
+              <img
+                src="https://tse2.mm.bing.net/th?id=OIP.Qw1cuDyOc6_UqYSOcZP-7AHaD4&pid=Api"
+                alt="BONK"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold">Bonk (BONK)</h3>
+              <p class="text-sm mt-2">
+                Primeira memecoin de cachorro da Solana, distribuída via
+                airdrop.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$BONK</span>
+              <span class="memecoin-stats">ATH: $3B MCap</span>
+              <span class="memecoin-stats">Launched: 2022</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fartcoin Card -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
+            <div
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
+            >
+              <img
+                src="https://tse3.mm.bing.net/th?id=OIP.9qG8H2FF9vNiGMWljgX4SAHaEO&pid=Api"
+                alt="FARTCOIN"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold">Fartcoin (FARTCOIN)</h3>
+              <p class="text-sm mt-2">
+                Memecoin humorística que alcançou US$ 1,47 bilhão em
+                capitalização.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$FART</span>
+              <span class="memecoin-stats">ATH: $1.47B MCap</span>
+              <span class="memecoin-stats">Launched: 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wif Card -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
+            <div
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
+            >
+              <img
+                src="https://tse2.mm.bing.net/th?id=OIP.9ODyzs08q45ES1145Yi0hwHaEK&pid=Api"
+                alt="WIF"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold">dogwifhat (WIF)</h3>
+              <p class="text-sm mt-2">
+                O cachorro com chapéu conquistou mais de US$ 1,1 bilhão em valor
+                de mercado.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$WIF</span>
+              <span class="memecoin-stats">ATH: $1.1B MCap</span>
+              <span class="memecoin-stats">Launched: 2023</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popcat Card -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
+            <div
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center"
+            >
+              <img
+                src="https://tse3.mm.bing.net/th?id=OIP.oRy-16diU0SW_yC6Nw5ijQHaEK&pid=Api"
+                alt="POPCAT"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold">Popcat (POPCAT)</h3>
+              <p class="text-sm mt-2">
+                Inspirada no famoso meme do gato, POPCAT atingiu quase US$ 500
+                milhões.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$POPCAT</span>
+              <span class="memecoin-stats">ATH: $500M MCap</span>
+              <span class="memecoin-stats">Launched: 2024</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonus Card - Solana Logo -->
+        <div class="memecoin-card">
+          <div class="memecoin-card-inner">
+            <div
+              class="memecoin-card-front feature-box p-6 rounded-xl text-center flex flex-col items-center justify-center"
+            >
+              <img
+                src="https://www.moneytimes.com.br/uploads/2021/10/solana5.jpg"
+                alt="SOLANA"
+                class="memecoin-logo"
+              />
+              <h3 class="text-xl font-bold mt-4">Solana (SOL)</h3>
+              <p class="text-sm mt-2">
+                A blockchain que tornou possível o boom das memecoins.
+              </p>
+            </div>
+            <div class="memecoin-card-back">
+              <span class="memecoin-ticker">$SOL</span>
+              <span class="memecoin-stats">ATH: $80B MCap</span>
+              <span class="memecoin-stats">Launched: 2020</span>
+            </div>
           </div>
         </div>
       </div>
@@ -814,6 +1055,20 @@
             clearInterval(typingEffect);
           }
         }, 50);
+
+        // Add hover effects to memecoin cards
+        const memecoinCards = document.querySelectorAll(".memecoin-card");
+        memecoinCards.forEach((card) => {
+          card.addEventListener("mouseenter", () => {
+            card.style.transform = "translateY(-10px)";
+            card.style.boxShadow = "0 20px 25px rgba(0, 255, 163, 0.3)";
+          });
+
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "translateY(0)";
+            card.style.boxShadow = "0 10px 15px rgba(0, 255, 163, 0.2)";
+          });
+        });
       });
     </script>
   </body>
