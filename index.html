@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Coin - The crazier, the more valuable</title>
@@ -28,14 +28,14 @@
     />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
+      
       :root {
         --bg-dark: #1e003e;
         --text-light: #f5f5f5;
         --primary: #dc1fff;
         --accent: #00ffa3;
       }
-
+      
       body {
         background-color: var(--bg-dark);
         font-family: "Poppins", sans-serif;
@@ -44,12 +44,12 @@
         color: var(--text-light);
         overflow-x: hidden;
       }
-
+      
       .logo-animation {
         animation: float 3s ease-in-out infinite,
           moveRight 15s linear infinite alternate;
       }
-
+      
       @keyframes float {
         0%,
         100% {
@@ -59,7 +59,7 @@
           transform: translateY(-10px);
         }
       }
-
+      
       @keyframes moveRight {
         0% {
           transform: translateX(-20px);
@@ -68,25 +68,25 @@
           transform: translateX(20px);
         }
       }
-
+      
       .feature-box {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         background: rgba(46, 16, 101, 0.5);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(220, 31, 255, 0.3);
       }
-
+      
       .feature-box:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 255, 163, 0.3);
       }
-
+      
       .btn-hover-effect {
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
       }
-
+      
       .btn-hover-effect::after {
         content: "";
         position: absolute;
@@ -102,15 +102,15 @@
         );
         transition: all 0.5s ease;
       }
-
+      
       .btn-hover-effect:hover::after {
         left: 100%;
       }
-
+      
       .pulse {
         animation: pulse 2s infinite;
       }
-
+      
       @keyframes pulse {
         0% {
           transform: scale(1);
@@ -122,13 +122,13 @@
           transform: scale(1);
         }
       }
-
+      
       .roadmap-item {
         position: relative;
         padding-left: 30px;
         margin-bottom: 30px;
       }
-
+      
       .roadmap-item::before {
         content: "";
         position: absolute;
@@ -139,7 +139,7 @@
         border-radius: 50%;
         background-color: var(--accent);
       }
-
+      
       .roadmap-item::after {
         content: "";
         position: absolute;
@@ -149,17 +149,17 @@
         height: calc(100% - 15px);
         background-color: var(--accent);
       }
-
+      
       .roadmap-item:last-child::after {
         display: none;
       }
-
+      
       .tokenomics-item {
         position: relative;
         padding-left: 20px;
         margin-bottom: 15px;
       }
-
+      
       .tokenomics-item::before {
         content: "•";
         position: absolute;
@@ -167,11 +167,11 @@
         color: var(--accent);
         font-weight: bold;
       }
-
+      
       .glow-text {
         text-shadow: 0 0 10px rgba(0, 255, 163, 0.5);
       }
-
+      
       .section-divider {
         width: 100%;
         height: 1px;
@@ -183,7 +183,7 @@
         );
         margin: 60px 0;
       }
-
+      
       .news-ticker {
         position: fixed;
         bottom: 0;
@@ -196,13 +196,13 @@
         z-index: 100;
         font-size: 0.85rem;
       }
-
+      
       .ticker-content {
         display: inline-block;
         white-space: nowrap;
         animation: ticker 30s linear infinite;
       }
-
+      
       @keyframes ticker {
         0% {
           transform: translateX(100%);
@@ -211,7 +211,7 @@
           transform: translateX(-100%);
         }
       }
-
+      
       .floating-coins {
         position: absolute;
         width: 100%;
@@ -221,7 +221,7 @@
         pointer-events: none;
         z-index: -1;
       }
-
+      
       .coin {
         position: absolute;
         width: 30px;
@@ -231,7 +231,7 @@
         opacity: 0.7;
         animation: float-coin 10s linear infinite;
       }
-
+      
       @keyframes float-coin {
         0% {
           transform: translateY(0) rotate(0deg);
@@ -248,14 +248,14 @@
           opacity: 0;
         }
       }
-
+      
       .language-switcher {
         position: fixed;
         top: 20px;
         right: 20px;
         z-index: 1000;
       }
-
+      
       .language-btn {
         background: rgba(220, 31, 255, 0.5);
         backdrop-filter: blur(5px);
@@ -272,44 +272,52 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         color: white;
       }
-
+      
       .language-btn:hover {
         background: rgba(0, 255, 163, 0.7);
         transform: scale(1.1);
       }
-
+      
       .content-en {
         display: block;
       }
-
+      
       .content-pt {
         display: none;
       }
-
+      
       body.portuguese .content-en {
         display: none;
       }
-
+      
       body.portuguese .content-pt {
         display: block;
       }
-
+      
+      body.portuguese {
+        --lang: 'pt';
+      }
+      
+      body:not(.portuguese) {
+        --lang: 'en';
+      }
+      
       .news-item {
         display: inline-block;
         margin-right: 40px;
       }
-
+      
       .ticker-container {
         display: flex;
         align-items: center;
       }
-
+      
       .ticker-label {
         font-weight: bold;
         margin-right: 10px;
         white-space: nowrap;
       }
-
+      
       /* New UI Enhancements */
       .header-container {
         background: rgba(30, 0, 62, 0.9);
@@ -317,7 +325,7 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         border-bottom: 1px solid rgba(220, 31, 255, 0.3);
       }
-
+      
       .main-container {
         background: linear-gradient(
           180deg,
@@ -325,32 +333,32 @@
           rgba(30, 0, 62, 0.95) 100%
         );
       }
-
+      
       .social-button {
         background: rgba(0, 255, 163, 0.2);
         backdrop-filter: blur(5px);
         border: 1px solid rgba(0, 255, 163, 0.3);
         color: white;
       }
-
+      
       .social-button:hover {
         background: rgba(0, 255, 163, 0.3);
       }
-
+      
       .buy-button {
         box-shadow: 0 4px 15px rgba(0, 255, 163, 0.4);
       }
-
+      
       .nsc-button {
         box-shadow: 0 4px 20px rgba(220, 31, 255, 0.5);
       }
-
+      
       .tokenomics-container {
         background: rgba(46, 16, 101, 0.7);
         backdrop-filter: blur(10px);
         border: 1px solid rgba(220, 31, 255, 0.3);
       }
-
+      
       .roadmap-container {
         background: rgba(46, 16, 101, 0.5);
         backdrop-filter: blur(5px);
@@ -358,35 +366,35 @@
         padding: 30px;
         border: 1px solid rgba(220, 31, 255, 0.3);
       }
-
+      
       .solana-gradient-text {
         background: linear-gradient(90deg, #00ffa3, #dc1fff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
+      
       .solana-gradient-bg {
         background: linear-gradient(90deg, #00ffa3, #dc1fff);
       }
-
+      
       .solana-gradient-border {
         border-image: linear-gradient(90deg, #00ffa3, #dc1fff) 1;
       }
-
+      
       .feature-icon {
         background: linear-gradient(135deg, #00ffa3, #dc1fff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
-
+      
       /* Enhanced Memecoins section styles */
       .memecoin-section-header {
         position: relative;
         margin-bottom: 4rem;
       }
-
+      
       .memecoin-header-image {
         width: 100%;
         max-width: 800px;
@@ -397,12 +405,12 @@
         box-shadow: 0 0 30px rgba(0, 255, 163, 0.3);
         filter: drop-shadow(0 0 10px rgba(220, 31, 255, 0.5));
       }
-
+      
       .memecoin-card {
         transition: all 0.3s ease;
         perspective: 1000px;
       }
-
+      
       .memecoin-card-inner {
         position: relative;
         width: 100%;
@@ -410,11 +418,11 @@
         transition: transform 0.6s;
         transform-style: preserve-3d;
       }
-
+      
       .memecoin-card:hover .memecoin-card-inner {
         transform: rotateY(180deg);
       }
-
+      
       .memecoin-card-front,
       .memecoin-card-back {
         position: absolute;
@@ -425,7 +433,7 @@
         padding: 1.5rem;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       }
-
+      
       .memecoin-card-back {
         transform: rotateY(180deg);
         background: linear-gradient(
@@ -437,7 +445,7 @@
         flex-direction: column;
         justify-content: center;
       }
-
+      
       .memecoin-logo {
         width: 80px;
         height: 80px;
@@ -448,20 +456,20 @@
         padding: 4px;
         background: rgba(30, 0, 62, 0.7);
       }
-
+      
       .memecoin-ticker {
         font-size: 1.25rem;
         font-weight: bold;
         color: var(--accent);
         margin-top: 0.5rem;
       }
-
+      
       .memecoin-stats {
         font-size: 0.85rem;
         margin-top: 0.5rem;
         color: var(--accent);
       }
-
+      
       /* Responsive grid with better spacing */
       .memecoin-grid {
         display: grid;
@@ -469,28 +477,28 @@
         gap: 2rem;
         justify-items: center;
       }
-
+      
       @media (min-width: 768px) {
         .memecoin-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 2.5rem;
         }
       }
-
+      
       @media (min-width: 1024px) {
         .memecoin-grid {
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 3rem;
         }
       }
-
+      
       /* Card specific styles */
       .memecoin-card {
         width: 100%;
         max-width: 320px;
         height: 380px;
       }
-
+      
       .memecoin-card-front {
         background: rgba(46, 16, 101, 0.5);
         backdrop-filter: blur(10px);
@@ -500,14 +508,135 @@
         align-items: center;
         justify-content: center;
       }
+      
+      /* Crypto News Widget Styles */
+      .crypto-news-widget {
+        background: rgba(46, 16, 101, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        padding: 1.5rem;
+        border: 1px solid rgba(220, 31, 255, 0.3);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        max-width: 380px;
+        margin: 2rem auto;
+      }
+      
+      .crypto-news-widget:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 255, 163, 0.2);
+      }
+      
+      .widget-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.25rem;
+      }
+      
+      .widget-mascot {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+        border: 2px solid var(--accent);
+      }
+      
+      .widget-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #00ffa3, #dc1fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .news-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .news-item-widget {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(220, 31, 255, 0.2);
+        transition: all 0.2s ease;
+      }
+      
+      .news-item-widget:last-child {
+        border-bottom: none;
+      }
+      
+      .news-item-widget:hover {
+        transform: translateX(5px);
+      }
+      
+      .news-link {
+        display: flex;
+        align-items: flex-start;
+        text-decoration: none;
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+      
+      .news-icon {
+        margin-right: 0.5rem;
+        color: var(--accent);
+        font-size: 1rem;
+        margin-top: 0.2rem;
+      }
+      
+      .news-title {
+        flex: 1;
+      }
+      
+      .widget-footer {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      
+      .widget-refresh-btn {
+        background: rgba(220, 31, 255, 0.2);
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: white;
+        margin-left: auto;
+      }
+      
+      .widget-refresh-btn:hover {
+        background: rgba(0, 255, 163, 0.3);
+        transform: rotate(180deg);
+      }
+      
+      .widget-language-toggle {
+        background: transparent;
+        border: none;
+        color: var(--accent);
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-left: 0.5rem;
+        transition: all 0.2s ease;
+      }
+      
+      .widget-language-toggle:hover {
+        text-decoration: underline;
+      }
     </style>
-  </head>
-  <body class="english">
+</head>
+<body class="english">
     <div class="floating-coins" id="floatingCoins"></div>
 
     <!-- Language Switcher -->
     <div class="language-switcher">
-      <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
+      <button class="language-btn btn-hover-effect" id="lang-toggle">
         <span class="content-pt">EN</span>
         <span class="content-en">PT</span>
       </button>
@@ -518,7 +647,7 @@
     >
       <div class="flex items-center mb-4 md:mb-0">
         <img
-          src="https://res-console.cloudinary.com/di0j9w7v8/thumbnails/v1/image/upload/v1748177017/U2hpYmFfSW51X2xlbmRvX2pvcm5hbF9fTmV3c0NvaW5fX3R1cmc5bA==/preview"
+          src="https://i.postimg.cc/fy4Nk2RY/upscalemedia-transformed.png"
           alt="NewsCoin"
           class="h-10 mr-4 logo-animation"
         />
@@ -598,7 +727,7 @@
     >
       <div class="max-w-4xl mx-auto">
         <img
-          src="https://res-console.cloudinary.com/di0j9w7v8/thumbnails/v1/image/upload/v1748177396/Q8Ojb19TaGliYV9JbnVfZV9Mb2dvc19EaWdpdGFpc19iZHk3a3U=/preview"
+          src="https://i.postimg.cc/2Sq42Y00/C-o-Shiba-Inu-e-Logos-Digitais.png"
           alt="NewsCoin"
           class="w-48 md:w-64 mx-auto mb-8 logo-animation"
         />
@@ -624,6 +753,34 @@
           <span class="content-pt">Dê um NSC</span>
           <span class="content-en">Give an NSC</span>
         </a>
+
+        <!-- Crypto News Widget - Integrated below main banner -->
+        <div class="crypto-news-widget">
+          <div class="widget-header">
+            <img
+              src="https://i.postimg.cc/yxSg8knQ/Shiba-Inu-lendo-jornal-News-Coin.png"
+              alt="News Coin Mascot"
+              class="widget-mascot"
+            />
+            <h3 class="widget-title content-pt">Notícias Cripto</h3>
+            <h3 class="widget-title content-en">Crypto News</h3>
+            <button class="widget-refresh-btn" onclick="loadCryptoNews()">
+              <i class="fas fa-sync-alt"></i>
+            </button>
+            <button
+              class="widget-language-toggle"
+              onclick="toggleLanguage()"
+            >
+              <span class="content-pt">EN</span>
+              <span class="content-en">PT</span>
+            </button>
+          </div>
+          <ul class="news-list" id="news-list"></ul>
+          <div class="widget-footer">
+            <span class="content-pt">Fonte: Livecoins</span>
+            <span class="content-en">Source: Cointelegraph</span>
+          </div>
+        </div>
 
         <div class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <div class="feature-box p-6 rounded-xl shadow-md">
@@ -960,8 +1117,34 @@
     </div>
 
     <script>
+      // Language detection and switching functions
+      function detectSiteLang() {
+        // First try to detect by html lang attribute
+        const htmlLang = document.documentElement.lang;
+        if (htmlLang) return htmlLang;
+        
+        // Then try to detect by body class
+        if (document.body.classList.contains('portuguese')) return 'pt';
+        if (document.body.classList.contains('english')) return 'en';
+        
+        // Then try to detect by body data-lang attribute
+        const bodyLang = document.body.getAttribute('data-lang');
+        if (bodyLang) return bodyLang;
+        
+        // Default to English
+        return 'en';
+      }
+
       function toggleLanguage() {
+        // Toggle body class
         document.body.classList.toggle("portuguese");
+        
+        // Update html lang attribute
+        const newLang = document.body.classList.contains("portuguese") ? "pt" : "en";
+        document.documentElement.lang = newLang;
+        
+        // Set data-lang attribute on body
+        document.body.setAttribute('data-lang', newLang);
       }
 
       // Create floating coins
@@ -990,9 +1173,92 @@
         }
       }
 
+      // Enhanced Crypto News Widget with automatic language detection
+      let lastLang = null;
+
+      async function loadCryptoNews() {
+        const currentLang = detectSiteLang();
+        const isPortuguese = currentLang === 'pt' || currentLang === 'pt-BR';
+        const rssUrl = isPortuguese
+          ? 'https://livecoins.com.br/feed/'
+          : 'https://cointelegraph.com/rss';
+
+        try {
+          const list = document.getElementById("news-list");
+          
+          // Clear existing news items
+          list.innerHTML = '';
+          
+          // Add loading state
+          const loadingItem = document.createElement('li');
+          loadingItem.className = 'news-item-widget';
+          loadingItem.innerHTML = `
+            <div class="news-link">
+              <i class="fas fa-spinner fa-spin news-icon"></i>
+              <span class="news-title content-pt">Carregando notícias...</span>
+              <span class="news-title content-en">Loading news...</span>
+            </div>
+          `;
+          list.appendChild(loadingItem);
+
+          // Use rss2json API to fetch and parse the RSS feed
+          const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+          const data = await response.json();
+
+          if (data.items) {
+            // Clear loading state
+            list.innerHTML = '';
+            
+            // Display news items
+            data.items.slice(0, 5).forEach(item => {
+              const li = document.createElement('li');
+              li.className = 'news-item-widget';
+              li.innerHTML = `
+                <a href="${item.link}" target="_blank" class="news-link">
+                  <i class="fas fa-newspaper news-icon"></i>
+                  <span class="news-title">${item.title}</span>
+                </a>
+              `;
+              list.appendChild(li);
+            });
+
+            // Update last loaded language
+            lastLang = currentLang;
+          } else {
+            throw new Error('Failed to fetch news');
+          }
+        } catch (error) {
+          console.error('Error loading crypto news:', error);
+          const list = document.getElementById("news-list");
+          list.innerHTML = `
+            <li class="news-item-widget">
+              <div class="news-link">
+                <i class="fas fa-exclamation-triangle news-icon"></i>
+                <span class="news-title content-pt">Erro ao carregar notícias. Tente novamente.</span>
+                <span class="news-title content-en">Error loading news. Please try again.</span>
+              </div>
+            </li>
+          `;
+        }
+      }
+
+      // Check for language changes every second
+      function checkLangChange() {
+        const currentLang = detectSiteLang();
+        if (currentLang !== lastLang) {
+          loadCryptoNews();
+        }
+      }
+
       // Initialize when DOM is loaded
       document.addEventListener("DOMContentLoaded", () => {
         createFloatingCoins();
+        
+        // Load news for the first time
+        loadCryptoNews();
+        
+        // Start checking for language changes
+        setInterval(checkLangChange, 1000);
 
         // Typing effect on title
         const title = document.querySelector("main h1 .content-en");
@@ -1022,7 +1288,13 @@
             card.style.boxShadow = "0 10px 15px rgba(0, 255, 163, 0.2)";
           });
         });
+
+        // Add event listener to language toggle button
+        const langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+          langToggle.addEventListener('click', toggleLanguage);
+        }
       });
     </script>
-  </body>
+</body>
 </html>
