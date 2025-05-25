@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>News Coin - Quanto mais loucura, mais valor</title>
+    <title>News Coin - The crazier, the more valuable</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -279,19 +279,19 @@
       }
 
       .content-en {
-        display: none;
+        display: block;
       }
 
       .content-pt {
-        display: block;
-      }
-
-      body.english .content-en {
-        display: block;
-      }
-
-      body.english .content-pt {
         display: none;
+      }
+
+      body.portuguese .content-en {
+        display: none;
+      }
+
+      body.portuguese .content-pt {
+        display: block;
       }
 
       .news-item {
@@ -502,7 +502,7 @@
       }
     </style>
   </head>
-  <body class="portuguese">
+  <body class="english">
     <div class="floating-coins" id="floatingCoins"></div>
 
     <!-- Language Switcher -->
@@ -518,7 +518,7 @@
     >
       <div class="flex items-center mb-4 md:mb-0">
         <img
-          src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-ff10-61f8-836a-76c7854710e4/raw?se=2025-05-25T01%3A02%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=3453b950-61e4-588c-ace3-1f59f6435f99&skoid=5cab1ff4-c20d-41dc-babb-df0c2cc21dd4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T08%3A00%3A12Z&ske=2025-05-25T08%3A00%3A12Z&sks=b&skv=2024-08-04&sig=DTSbcBD9hOJJi%2BWEPDIgXSawYH2sQSpONRs2KBA9Rsk%3D"
+          src="https://sdmntpreastus.oaiusercontent.com/files/00000000-5644-61f9-bf02-0db3d4901c01/raw?se=2025-05-25T02%3A27%3A08Z&sp=r&sv=2024-08-04&sr=b&scid=e7e4deff-78e4-5607-9475-5f20a32d5bf7&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-25T00%3A39%3A57Z&ske=2025-05-26T00%3A39%3A57Z&sks=b&skv=2024-08-04&sig=bkHhpexCS08jcE5ELhPLT8E1KQApDeUkhkG1P7r4f78%3D"
           alt="NewsCoin"
           class="h-10 mr-4 logo-animation"
         />
@@ -598,7 +598,7 @@
     >
       <div class="max-w-4xl mx-auto">
         <img
-          src="https://sdmntprwestus2.oaiusercontent.com/files/00000000-ff10-61f8-836a-76c7854710e4/raw?se=2025-05-25T01%3A02%3A54Z&sp=r&sv=2024-08-04&sr=b&scid=3453b950-61e4-588c-ace3-1f59f6435f99&skoid=5cab1ff4-c20d-41dc-babb-df0c2cc21dd4&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-24T08%3A00%3A12Z&ske=2025-05-25T08%3A00%3A12Z&sks=b&skv=2024-08-04&sig=DTSbcBD9hOJJi%2BWEPDIgXSawYH2sQSpONRs2KBA9Rsk%3D"
+          src="https://sdmntpreastus.oaiusercontent.com/files/00000000-5644-61f9-bf02-0db3d4901c01/raw?se=2025-05-25T02%3A27%3A08Z&sp=r&sv=2024-08-04&sr=b&scid=e7e4deff-78e4-5607-9475-5f20a32d5bf7&skoid=61180a4f-34a9-42b7-b76d-9ca47d89946d&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-25T00%3A39%3A57Z&ske=2025-05-26T00%3A39%3A57Z&sks=b&skv=2024-08-04&sig=bkHhpexCS08jcE5ELhPLT8E1KQApDeUkhkG1P7r4f78%3D"
           alt="NewsCoin"
           class="w-48 md:w-64 mx-auto mb-8 logo-animation"
         />
@@ -857,9 +857,13 @@
                 class="memecoin-logo"
               />
               <h3 class="text-xl font-bold">Official Trump (TRUMP)</h3>
-              <p class="text-sm mt-2">
+              <p class="text-sm mt-2 content-pt">
                 Inspirada em Donald Trump, atingiu mais de US$ 2,6 bilhões de
                 marketcap.
+              </p>
+              <p class="text-sm mt-2 content-en">
+                Inspired by Donald Trump, it reached over $2.6 billion in market
+                cap.
               </p>
             </div>
             <div class="memecoin-card-back">
@@ -882,9 +886,12 @@
                 class="memecoin-logo"
               />
               <h3 class="text-xl font-bold">Bonk (BONK)</h3>
-              <p class="text-sm mt-2">
+              <p class="text-sm mt-2 content-pt">
                 Primeira memecoin de cachorro da Solana, distribuída via
                 airdrop.
+              </p>
+              <p class="text-sm mt-2 content-en">
+                First dog memecoin on Solana, distributed via airdrop.
               </p>
             </div>
             <div class="memecoin-card-back">
@@ -907,9 +914,12 @@
                 class="memecoin-logo"
               />
               <h3 class="text-xl font-bold">dogwifhat (WIF)</h3>
-              <p class="text-sm mt-2">
+              <p class="text-sm mt-2 content-pt">
                 O cachorro com chapéu conquistou mais de US$ 1,1 bilhão em valor
                 de mercado.
+              </p>
+              <p class="text-sm mt-2 content-en">
+                The dog with a hat reached over $1.1 billion in market value.
               </p>
             </div>
             <div class="memecoin-card-back">
@@ -951,7 +961,7 @@
 
     <script>
       function toggleLanguage() {
-        document.body.classList.toggle("english");
+        document.body.classList.toggle("portuguese");
       }
 
       // Create floating coins
@@ -985,7 +995,7 @@
         createFloatingCoins();
 
         // Typing effect on title
-        const title = document.querySelector("main h1 .content-pt");
+        const title = document.querySelector("main h1 .content-en");
         const originalText = title.textContent;
         title.textContent = "";
 
