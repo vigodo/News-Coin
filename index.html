@@ -28,7 +28,7 @@
   </script>
 
   <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -54,8 +54,7 @@
     }
 
     .logo-animation {
-      animation: float 3s ease-in-out infinite,
-        moveRight 15s linear infinite alternate;
+      animation: float 3s ease-in-out infinite, moveRight 15s linear infinite alternate;
     }
 
     @keyframes float {
@@ -93,12 +92,7 @@
       height: 100%;
       top: 0;
       left: -100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(220, 31, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(220, 31, 255, 0.2), transparent);
       transition: all 0.5s ease;
     }
 
@@ -168,12 +162,7 @@
     .section-divider {
       width: 100%;
       height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--accent),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
       margin: 60px 0;
     }
 
@@ -313,11 +302,7 @@
     }
 
     .main-container {
-      background: linear-gradient(
-        180deg,
-        rgba(30, 0, 62, 0.8) 0%,
-        rgba(30, 0, 62, 0.95) 100%
-      );
+      background: linear-gradient(180deg, rgba(30, 0, 62, 0.8) 0%, rgba(30, 0, 62, 0.95) 100%);
     }
 
     .social-button {
@@ -422,11 +407,7 @@
 
     .memecoin-card-back {
       transform: rotateY(180deg);
-      background: linear-gradient(
-        135deg,
-        rgba(220, 31, 255, 0.2),
-        rgba(0, 255, 163, 0.2)
-      );
+      background: linear-gradient(135deg, rgba(220, 31, 255, 0.2), rgba(0, 255, 163, 0.2));
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -456,10 +437,9 @@
       color: var(--accent);
     }
 
-    /* Responsive grid with better spacing */
     .memecoin-grid {
       display: grid;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       justify-items: center;
     }
@@ -478,7 +458,6 @@
       }
     }
 
-    /* Card specific styles */
     .memecoin-card {
       width: 100%;
       max-width: 320px;
@@ -676,12 +655,63 @@
         transform: scale(1.05);
       }
     }
+
+    /* Footer Ticker de Preços Cripto */
+    .crypto-ticker-footer {
+      background: linear-gradient(to right, #1e003e, #2e1065);
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 3rem;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .crypto-ticker-content {
+      display: inline-block;
+      animation: ticker 60s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .crypto-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      white-space: nowrap;
+      background: rgba(46, 16, 101, 0.7);
+    }
+
+    .crypto-ticker-item.nsc {
+      background: rgba(220, 31, 255, 0.7);
+    }
+
+    .crypto-icon {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+
+    .percent-up {
+      color: #00ff88;
+    }
+
+    .percent-down {
+      color: #ff4d4d;
+    }
   </style>
 </head>
 <body class="english">
   <div id="floatingCoins" class="floating-coins"></div>
 
-  <!-- MENU HAMBÚRGUER MOBILE + BOTÃO BUY -->
+  <!-- MENU HAMBÚRGUER MOBILE -->
   <div class="mobile-header md:hidden">
     <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
     <a href="#buy" class="buy-btn-mobile">Buy $NSC</a>
@@ -777,27 +807,21 @@
   <!-- Features Section -->
   <div class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto">
     <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-award"></i>
-      </div>
+      <div class="feature-icon text-4xl mb-4"><i class="fas fa-award"></i></div>
       <h3 class="text-xl font-bold mb-3 content-pt text-solana-teal">Distribua NSC</h3>
       <h3 class="text-xl font-bold mb-3 content-en text-solana-teal">Distribute NSC</h3>
       <p class="text-solana-light content-pt">Você pode distribuir uma NSC para premiar quem espalhou a fake news mais criativa.</p>
       <p class="text-solana-light content-en">You can distribute a NSC to reward who spread the most creative fake news.</p>
     </div>
     <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-laugh-squint"></i>
-      </div>
+      <div class="feature-icon text-4xl mb-4"><i class="fas fa-laugh-squint"></i></div>
       <h3 class="text-xl font-bold mb-3 content-pt text-solana-teal">Memes Oficiais</h3>
       <h3 class="text-xl font-bold mb-3 content-en text-solana-teal">Official Memes</h3>
       <p class="text-solana-light content-pt">Memes oficiais gerados pela comunidade com base nas notícias da semana.</p>
       <p class="text-solana-light content-en">Official memes generated by the community based on the week's news.</p>
     </div>
     <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-chart-line"></i>
-      </div>
+      <div class="feature-icon text-4xl mb-4"><i class="fas fa-chart-line"></i></div>
       <h3 class="text-xl font-bold mb-3 content-pt text-solana-teal">Oráculo Cripto</h3>
       <h3 class="text-xl font-bold mb-3 content-en text-solana-teal">Crypto Oracle</h3>
       <p class="text-solana-light content-pt">Um oráculo cripto baseado nas previsões da Fox News e CNN (todas erradas, claro).</p>
@@ -930,21 +954,12 @@
     </div>
   </section>
 
-  <!-- News Ticker -->
-  <div class="news-ticker">
-    <div class="ticker-content">
-      <span class="ticker-container">
-        <span class="ticker-label content-pt">ÚLTIMAS NOTÍCIAS:</span>
-        <span class="ticker-label content-en">LATEST NEWS:</span>
-        <span class="news-item content-pt">Elon Musk compra a News Coin por 1 milhão de Bitcoin!</span>
-        <span class="news-item content-en">Elon Musk buys News Coin for 1 million Bitcoin!</span>
-        <span class="news-item content-pt">Governo anuncia isenção fiscal para transações com $NSC!</span>
-        <span class="news-item content-en">Government announces tax exemption for $NSC transactions!</span>
-        <span class="news-item content-pt">$NSC vai superar Bitcoin em valor de mercado!</span>
-        <span class="news-item content-en">$NSC will surpass Bitcoin in market value!</span>
-      </span>
+  <!-- Rodapé com Ticker de Preços Cripto -->
+  <footer class="crypto-ticker-footer mt-12">
+    <div class="crypto-ticker-content" id="crypto-ticker">
+      <!-- Moedas serão inseridas aqui via JS -->
     </div>
-  </div>
+  </footer>
 
   <!-- Scripts -->
   <script>
@@ -953,21 +968,105 @@
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
 
+    // Detecta idioma do site
     function detectSiteLang() {
-      const htmlLang = document.documentElement.lang;
-      if (htmlLang) return htmlLang;
-      if (document.body.classList.contains("portuguese")) return "pt";
-      if (document.body.classList.contains("english")) return "en";
-      const bodyLang = document.body.getAttribute("data-lang");
-      if (bodyLang) return bodyLang;
-      return "en";
+      return document.body.classList.contains("portuguese") ? "pt" : "en";
     }
 
+    // Alterna entre EN/PT
     function toggleLanguage() {
       document.body.classList.toggle("portuguese");
       const newLang = document.body.classList.contains("portuguese") ? "pt" : "en";
       document.documentElement.lang = newLang;
       document.body.setAttribute("data-lang", newLang);
+      loadCryptoNews(); // Recarrega notícias
+    }
+
+    // Carrega notícias cripto reais
+    async function loadCryptoNews() {
+      const list = document.getElementById("news-list");
+      const currentLang = detectSiteLang();
+      const sourceMap = {
+        en: "https://cointelegraph.com/rss",
+        pt: "https://livecoins.com.br/feed/",
+      };
+      const rssUrl = sourceMap[currentLang] || sourceMap.en;
+
+      try {
+        list.innerHTML = `
+          <li class="news-item-widget">
+            <div class="news-link">
+              <i class="fas fa-spinner fa-spin news-icon"></i>
+              <span class="news-title">${currentLang === 'pt' ? 'Carregando notícias...' : 'Loading news...'}</span>
+            </div>
+          </li>
+        `;
+
+        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
+        const data = await res.json();
+
+        if (data.items && data.items.length > 0) {
+          list.innerHTML = "";
+          data.items.slice(0, 3).forEach((item) => {
+            const li = document.createElement("li");
+            li.className = "news-item-widget";
+            li.innerHTML = `
+              <a href="${item.link}" target="_blank" class="news-link">
+                <i class="fas fa-newspaper news-icon"></i>
+                <span class="news-title">${item.title}</span>
+              </a>
+            `;
+            list.appendChild(li);
+          });
+        } else {
+          throw new Error("Erro ao carregar notícias");
+        }
+      } catch (error) {
+        console.error("Erro ao carregar notícias:", error);
+        list.innerHTML = `
+          <li class="news-item-widget">
+            <div class="news-link">
+              <i class="fas fa-exclamation-triangle news-icon"></i>
+              <span class="news-title">${currentLang === 'pt' ? 'Erro ao carregar notícias.' : 'Error loading news.'}</span>
+            </div>
+          </li>
+        `;
+      }
+    }
+
+    // Busca preços cripto
+    async function fetchCryptoPrices() {
+      const ids = ["bitcoin", "ethereum", "solana", "cardano", "avalanche", "dogecoin", "litecoin", "chainlink", "uniswap", "monero"];
+      try {
+        const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(",")}&order=market_cap_desc&per_page=10&page=1&sparkline=false`);
+        const data = await res.json();
+        const ticker = document.getElementById("crypto-ticker");
+        ticker.innerHTML = "";
+
+        data.forEach(coin => {
+          const span = document.createElement("span");
+          span.className = "crypto-ticker-item";
+          const percentClass = coin.price_change_percentage_24h >= 0 ? "percent-up" : "percent-down";
+          span.innerHTML = `
+            <img src="${coin.image}" alt="${coin.name}" class="crypto-icon" />
+            <span>${coin.symbol.toUpperCase()}: $${coin.current_price.toFixed(2)}</span>
+            <span class="${percentClass} ml-2">${coin.price_change_percentage_24h.toFixed(2)}%</span>
+          `;
+          ticker.appendChild(span);
+        });
+
+        // Adiciona NSC manualmente
+        const nscSpan = document.createElement("span");
+        nscSpan.className = "crypto-ticker-item nsc";
+        nscSpan.innerHTML = `
+          <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon" />
+          <span>NSC: $0.0032</span>
+        `;
+        ticker.appendChild(nscSpan);
+
+      } catch (e) {
+        console.error("Erro ao buscar preços:", e);
+      }
     }
 
     function createFloatingCoins() {
@@ -987,122 +1086,12 @@
       }
     }
 
-    let lastLang = null;
-
-    async function loadCryptoNews() {
-      const currentLang = detectSiteLang();
-      const isPortuguese = currentLang === "pt" || currentLang === "pt-BR";
-      const rssUrl = isPortuguese
-        ? "https://livecoins.com.br/feed/"
-        : "https://cointelegraph.com/rss";
-
-      try {
-        const list = document.getElementById("news-list");
-        list.innerHTML = `
-          <li class="news-item-widget">
-            <div class="news-link">
-              <i class="fas fa-spinner fa-spin news-icon"></i>
-              <span class="news-title content-pt">Carregando notícias...</span>
-              <span class="news-title content-en">Loading news...</span>
-            </div>
-          </li>
-        `;
-
-        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-        const data = await response.json();
-
-        if (data.items) {
-          list.innerHTML = "";
-          data.items.slice(0, 5).forEach((item) => {
-            const li = document.createElement("li");
-            li.className = "news-item-widget";
-            li.innerHTML = `
-              <a href="${item.link}" target="_blank" class="news-link">
-                <i class="fas fa-newspaper news-icon"></i>
-                <span class="news-title">${item.title}</span>
-              </a>
-            `;
-            list.appendChild(li);
-          });
-          lastLang = currentLang;
-        } else {
-          throw new Error("Failed to fetch news");
-        }
-      } catch (error) {
-        console.error("Error loading crypto news:", error);
-        const list = document.getElementById("news-list");
-        list.innerHTML = `
-          <li class="news-item-widget">
-            <div class="news-link">
-              <i class="fas fa-exclamation-triangle news-icon"></i>
-              <span class="news-title content-pt">Erro ao carregar notícias. Tente novamente.</span>
-              <span class="news-title content-en">Error loading news. Please try again.</span>
-            </div>
-          </li>
-        `;
-      }
-    }
-
-    function checkLangChange() {
-      const currentLang = detectSiteLang();
-      if (currentLang !== lastLang) {
-        loadCryptoNews();
-      }
-    }
-
-    let lastScrollPosition = 0;
-    const header = document.getElementById("main-header");
-    const headerHeight = header.offsetHeight;
-
-    function handleScroll() {
-      const currentScrollPosition = window.pageYOffset;
-      if (
-        currentScrollPosition > lastScrollPosition &&
-        currentScrollPosition > headerHeight
-      ) {
-        header.classList.add("header-hidden");
-      } else if (currentScrollPosition < lastScrollPosition) {
-        header.classList.remove("header-hidden");
-      }
-      lastScrollPosition = currentScrollPosition;
-    }
-
+    // Carrega dados ao iniciar
     document.addEventListener("DOMContentLoaded", () => {
       createFloatingCoins();
+      fetchCryptoPrices();
+      setInterval(fetchCryptoPrices, 60000); // Atualiza a cada 60 segundos
       loadCryptoNews();
-      setInterval(checkLangChange, 1000);
-
-      const title = document.querySelector("main h1 .content-en");
-      const originalText = title.textContent;
-      title.textContent = "";
-      let i = 0;
-      const typingEffect = setInterval(() => {
-        if (i < originalText.length) {
-          title.textContent += originalText.charAt(i);
-          i++;
-        } else {
-          clearInterval(typingEffect);
-        }
-      }, 50);
-
-      const memecoinCards = document.querySelectorAll(".memecoin-card");
-      memecoinCards.forEach((card) => {
-        card.addEventListener("mouseenter", () => {
-          card.style.transform = "translateY(-10px)";
-          card.style.boxShadow = "0 20px 25px rgba(0, 255, 163, 0.3)";
-        });
-        card.addEventListener("mouseleave", () => {
-          card.style.transform = "translateY(0)";
-          card.style.boxShadow = "0 10px 15px rgba(0, 255, 163, 0.2)";
-        });
-      });
-
-      const langToggle = document.getElementById("lang-toggle");
-      if (langToggle) {
-        langToggle.addEventListener("click", toggleLanguage);
-      }
-
-      window.addEventListener("scroll", handleScroll, { passive: true });
     });
   </script>
 </body>
