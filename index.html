@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>News Coin - The crazier, the more valuable</title>
-
+  
   <!-- TailwindCSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script> 
+  <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Tailwind Config -->
   <script>
@@ -28,15 +28,16 @@
   </script>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"  />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  
   <!-- CSS Custom -->
   <style>
     :root {
-      --bg-dark: #1e003e; 
+      --bg-dark: #1e003e;
+      
       --text-light: #f5f5f5;
       --primary: #dc1fff;
       --accent: #00ffa3;
@@ -108,6 +109,97 @@
 
     body.portuguese .content-pt {
       display: block;
+    }
+
+    /* Floating Coins */
+    .coin {
+      position: absolute;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300FFA3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+      animation: floatCoin 15s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes floatCoin {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Crypto Ticker */
+    .crypto-ticker-footer {
+      background: linear-gradient(90deg, rgba(30, 0, 62, 0.9) 0%, rgba(0, 240, 255, 0.2) 50%, rgba(30, 0, 62, 0.9) 100%);
+      padding: 12px 0;
+      border-top: 1px solid rgba(220, 31, 255, 0.2);
+      border-bottom: 1px solid rgba(220, 31, 255, 0.2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .crypto-ticker-content {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 60s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .crypto-ticker-item {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 20px;
+      font-size: 16px;
+      font-weight: 500;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: rgba(0, 255, 163, 0.1);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .crypto-ticker-item:hover {
+      background: rgba(220, 31, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    .crypto-icon {
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+
+    .percent-up {
+      color: #00FFA3;
+      margin-left: 6px;
+    }
+
+    .percent-down {
+      color: #FF3E3E;
+      margin-left: 6px;
+    }
+
+    .nsc {
+      background: linear-gradient(90deg, rgba(220, 31, 255, 0.2) 0%, rgba(0, 255, 163, 0.2) 100%) !important;
     }
 
     /* Mobile Menu */
@@ -204,8 +296,8 @@
     <a href="#roadmap">Roadmap</a>
     <a href="#tokenomics">Tokenomics</a>
     <a href="#">Community</a>
-    <a href="https://twitter.com/NewscoinOf"  target="_blank">Twitter</a>
-    <a href="https://t.me/+Qmi0Y9mPd642ZTJh"  target="_blank">Telegram</a>
+    <a href="https://twitter.com/NewscoinOf" target="_blank">Twitter</a>
+    <a href="https://t.me/+Qmi0Y9mPd642ZTJh" target="_blank">Telegram</a>
     <!-- Language Switcher no menu mobile -->
     <button class="language-switcher mobile-lang btn-hover-effect" onclick="toggleLanguage()">
       <span class="content-pt">EN</span>
@@ -225,7 +317,7 @@
   <header class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 bg-solana-dark">
     <!-- Logo -->
     <div class="flex items-center mb-4 md:mb-0">
-      <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png"  alt="NewsCoin" class="h-10 mr-4 logo-animation" />
+      <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NewsCoin" class="h-10 mr-4 logo-animation" />
       <h1 class="text-xl font-bold hidden md:block solana-gradient-text">NEWS COIN</h1>
     </div>
 
@@ -243,10 +335,10 @@
 
     <!-- Social & Buy Button -->
     <div class="hidden md:flex flex-wrap gap-2">
-      <button onclick="window.open('https://x.com/NewscoinOf')"  class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
+      <button onclick="window.open('https://x.com/NewscoinOf')" class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
         <i class="fab fa-twitter mr-2"></i> Twitter
       </button>
-      <button onclick="window.open('https://t.me/+Qmi0Y9mPd642ZTJh')"  class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
+      <button onclick="window.open('https://t.me/+Qmi0Y9mPd642ZTJh')" class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
         <i class="fab fa-telegram mr-2"></i> Telegram
       </button>
       <a href="#buy" class="buy-button px-4 py-2 rounded-lg font-bold bg-gradient-to-r from-solana-teal to-solana-purple text-white pulse">
@@ -259,7 +351,7 @@
   <!-- Main Content -->
   <main class="main-container text-center py-16 px-4 md:px-10 lg:px-20 relative">
     <div class="max-w-4xl mx-auto">
-      <img src="https://i.postimg.cc/yxSg8knQ/Shiba-Inu-lendo-jornal-News-Coin.png"  alt="NewsCoin Mascot" class="w-48 md:w-64 mx-auto mb-8 logo-animation" />
+      <img src="https://i.postimg.cc/yxSg8knQ/Shiba-Inu-lendo-jornal-News-Coin.png" alt="NewsCoin Mascot" class="w-48 md:w-64 mx-auto mb-8 logo-animation" />
       <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
         <span class="content-pt solana-gradient-text">O seu radar diário do universo cripto</span>
         <span class="content-en solana-gradient-text">Your daily crypto universe radar</span>
@@ -268,7 +360,7 @@
         <span class="content-pt">Quanto mais loucura, mais valor.</span>
         <span class="content-en">The crazier, the more valuable.</span>
       </p>
-      <a href="https://x.com/NewscoinOf"  class="nsc-button px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-solana-purple to-solana-teal text-white shadow-lg transform hover:scale-105 transition-all duration-300">
+      <a href="https://x.com/NewscoinOf" class="nsc-button px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-solana-purple to-solana-teal text-white shadow-lg transform hover:scale-105 transition-all duration-300">
         <span class="content-pt">Dê um NSC</span>
         <span class="content-en">Give an NSC</span>
       </a>
@@ -364,7 +456,7 @@
   <!-- Memecoins -->
   <section id="memecoins" class="py-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto">
     <div class="memecoin-section-header text-center">
-      <img src="https://livecoins.com.br/wp-content/uploads/2022/01/solana.jpg.webp"  alt="Solana Memecoins Explosion" class="memecoin-header-image mx-auto mb-6" />
+      <img src="https://livecoins.com.br/wp-content/uploads/2022/01/solana.jpg.webp" alt="Solana Memecoins Explosion" class="memecoin-header-image mx-auto mb-6" />
       <h2 class="text-3xl md:text-4xl font-bold mb-12 glow-text solana-gradient-text">
         <span class="content-pt">Memecoins que Explodiram na Solana</span>
         <span class="content-en">Meme Coins that Boomed on Solana</span>
@@ -373,7 +465,7 @@
     <div class="memecoin-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Trump Card -->
       <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
-        <img src="https://s2-valor.glbimg.com/IQiXZoAJRgcPdTDyxX-wX9GVAUA=/0x0:732x864/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/F/4/TF6WugQbGrQcz1Pw7vUQ/strump.jpg"  alt="TRUMP" class="memecoin-logo w-20 h-20 mx-auto mb-4" />
+        <img src="https://s2-valor.glbimg.com/IQiXZoAJRgcPdTDyxX-wX9GVAUA=/0x0:732x864/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/F/4/TF6WugQbGrQcz1Pw7vUQ/strump.jpg" alt="TRUMP" class="memecoin-logo w-20 h-20 mx-auto mb-4" />
         <h3 class="text-xl font-bold">Official Trump (TRUMP)</h3>
         <p class="text-sm mt-2 content-pt">Inspirada em Donald Trump, atingiu mais de US$ 2,6 bilhões de marketcap.</p>
         <p class="text-sm mt-2 content-en">Inspired by Donald Trump, it reached over $2.6 billion in market cap.</p>
@@ -418,7 +510,9 @@
 
   <!-- Footer Ticker -->
   <footer class="crypto-ticker-footer mt-12">
-    <div class="crypto-ticker-content" id="crypto-ticker"></div>
+    <div class="crypto-ticker-content" id="crypto-ticker">
+      <!-- Ticker items will be added dynamically -->
+    </div>
   </footer>
 
   <!-- Scripts -->
@@ -474,41 +568,105 @@
     }
 
     async function fetchCryptoPrices() {
-      const ids = ["bitcoin", "ethereum", "solana"];
+      const coins = [
+        { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
+        { id: "ethereum", symbol: "ETH", name: "Ethereum" },
+        { id: "solana", symbol: "SOL", name: "Solana" },
+        { id: "binancecoin", symbol: "BNB", name: "BNB" },
+        { id: "ripple", symbol: "XRP", name: "XRP" },
+        { id: "cardano", symbol: "ADA", name: "Cardano" },
+        { id: "dogecoin", symbol: "DOGE", name: "Dogecoin" },
+        { id: "polkadot", symbol: "DOT", name: "Polkadot" },
+        { id: "avalanche-2", symbol: "AVAX", name: "Avalanche" },
+        { id: "chainlink", symbol: "LINK", name: "Chainlink" },
+        { id: "polygon", symbol: "MATIC", name: "Polygon" },
+        { id: "the-open-network", symbol: "TON", name: "Toncoin" },
+        { id: "shiba-inu", symbol: "SHIB", name: "Shiba Inu" },
+        { id: "litecoin", symbol: "LTC", name: "Litecoin" },
+        { id: "uniswap", symbol: "UNI", name: "Uniswap" },
+        { id: "bitcoin-cash", symbol: "BCH", name: "Bitcoin Cash" },
+        { id: "stellar", symbol: "XLM", name: "Stellar" },
+        { id: "filecoin", symbol: "FIL", name: "Filecoin" },
+        { id: "vechain", symbol: "VET", name: "VeChain" },
+        { id: "monero", symbol: "XMR", name: "Monero" }
+      ];
+
       try {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join("%2C")}`);
+        const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coins.map(c => c.id).join("%2C")}`);
         const data = await res.json();
         const ticker = document.getElementById("crypto-ticker");
+        
+        // Clear existing items
         ticker.innerHTML = "";
+        
+        // Add real coins
         data.forEach(coin => {
           const span = document.createElement("span");
           span.className = "crypto-ticker-item";
           const percentClass = coin.price_change_percentage_24h >= 0 ? "percent-up" : "percent-down";
+          const changeIcon = coin.price_change_percentage_24h >= 0 ? "▲" : "▼";
+          
           span.innerHTML = `
             <img src="${coin.image}" alt="${coin.name}" class="crypto-icon w-5 h-5 inline" />
-            ${coin.symbol.toUpperCase()}: $${coin.current_price.toFixed(2)} <span class="${percentClass}">${coin.price_change_percentage_24h.toFixed(2)}%</span>`;
-          ticker.appendChild(span);
+            ${coin.symbol.toUpperCase()}: $${coin.current_price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} 
+            <span class="${percentClass}">${changeIcon} ${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%</span>
+          `;
+          
+          // Duplicate each coin to make the ticker longer
+          ticker.appendChild(span.cloneNode(true));
+          ticker.appendChild(span.cloneNode(true));
         });
 
-        // Adiciona NSC manualmente
+        // Add NSC manually (with duplicates)
         const nscSpan = document.createElement("span");
         nscSpan.className = "crypto-ticker-item nsc";
-        nscSpan.innerHTML = `<img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" /> NSC: $0.0032`;
-        ticker.appendChild(nscSpan);
+        nscSpan.innerHTML = `
+          <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" /> 
+          NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
+        `;
+        
+        // Add multiple NSC items
+        ticker.appendChild(nscSpan.cloneNode(true));
+        ticker.appendChild(nscSpan.cloneNode(true));
+        ticker.appendChild(nscSpan.cloneNode(true));
+
       } catch (e) {
         console.error("Erro ao buscar preços:", e);
+        // Fallback static data
+        const ticker = document.getElementById("crypto-ticker");
+        ticker.innerHTML = `
+          <span class="crypto-ticker-item">
+            <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin" class="crypto-icon w-5 h-5 inline" />
+            BTC: $63,420.50 <span class="percent-up">▲ 1.23%</span>
+          </span>
+          <span class="crypto-ticker-item">
+            <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum" class="crypto-icon w-5 h-5 inline" />
+            ETH: $3,450.20 <span class="percent-down">▼ 0.45%</span>
+          </span>
+          <span class="crypto-ticker-item">
+            <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" alt="Solana" class="crypto-icon w-5 h-5 inline" />
+            SOL: $145.75 <span class="percent-up">▲ 5.67%</span>
+          </span>
+          <span class="crypto-ticker-item nsc">
+            <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" />
+            NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
+          </span>
+        `;
       }
     }
 
     function createFloatingCoins() {
       const container = document.getElementById("floatingCoins");
-      const coinCount = 15;
+      const coinCount = 20;
+      
       for (let i = 0; i < coinCount; i++) {
         const coin = document.createElement("div");
         coin.className = "coin";
         coin.style.left = `${Math.random() * 100}%`;
+        coin.style.top = `${Math.random() * 100}%`;
         coin.style.animationDelay = `${Math.random() * 10}s`;
-        coin.style.width = coin.style.height = `${20 + Math.random() * 20}px`;
+        coin.style.width = coin.style.height = `${20 + Math.random() * 30}px`;
+        coin.style.opacity = `${0.3 + Math.random() * 0.7}`;
         container.appendChild(coin);
       }
     }
