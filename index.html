@@ -1,640 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Coin - The crazier, the more valuable</title>
-  
-  <!-- TailwindCSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Tailwind Config -->
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            solana: {
-              dark: "#1e003e",
-              purple: "#DC1FFF",
-              teal: "#00FFA3",
-              light: "#F5F5F5",
-              cyan: "#00F0FF",
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Coin - The crazier, the more valuable</title>
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              solana: {
+                dark: "#1e003e",
+                purple: "#DC1FFF",
+                teal: "#00FFA3",
+                light: "#F5F5F5",
+                cyan: "#00F0FF",
+              },
             },
           },
         },
-      },
-    };
-  </script>
+      };
+    </script>
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- CSS Custom -->
-  <style>
-    :root {
-      --bg-dark: #1e003e;
-      
-      --text-light: #f5f5f5;
-      --primary: #dc1fff;
-      --accent: #00ffa3;
-    }
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
-    body {
-      background-color: var(--bg-dark);
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      color: var(--text-light);
-      overflow-x: hidden;
-    }
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    .logo-animation {
-      animation: float 3s ease-in-out infinite, moveRight 15s linear infinite alternate;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes moveRight {
-      0% { transform: translateX(-20px); }
-      100% { transform: translateX(20px); }
-    }
-
-    /* Botão de Idioma */
-    .language-switcher {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-    }
-
-    .language-btn {
-      background: rgba(220, 31, 255, 0.5);
-      backdrop-filter: blur(5px);
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      color: white;
-    }
-
-    .language-btn:hover {
-      background: rgba(0, 255, 163, 0.7);
-      transform: scale(1.1);
-    }
-
-    .content-en {
-      display: block;
-    }
-
-    .content-pt {
-      display: none;
-    }
-
-    body.portuguese .content-en {
-      display: none;
-    }
-
-    body.portuguese .content-pt {
-      display: block;
-    }
-
-    /* Floating Coins */
-    .coin {
-      position: absolute;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300FFA3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>');
-      background-size: contain;
-      background-repeat: no-repeat;
-      opacity: 0.8;
-      animation: floatCoin 15s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes floatCoin {
-      0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
+    <!-- CSS Custom -->
+    <style>
+      :root {
+        --bg-dark: #1e003e;
+        
+        --text-light: #f5f5f5;
+        --primary: #dc1fff;
+        --accent: #00ffa3;
       }
-      10% {
-        opacity: 0.8;
+
+      body {
+        background-color: var(--bg-dark);
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        color: var(--text-light);
+        overflow-x: hidden;
       }
-      90% {
-        opacity: 0.8;
+
+      .logo-animation {
+        animation: float 3s ease-in-out infinite,
+          moveRight 15s linear infinite alternate;
       }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
       }
-    }
 
-    /* Crypto Ticker */
-    .crypto-ticker-footer {
-      background: linear-gradient(90deg, rgba(30, 0, 62, 0.9) 0%, rgba(0, 240, 255, 0.2) 50%, rgba(30, 0, 62, 0.9) 100%);
-      padding: 12px 0;
-      border-top: 1px solid rgba(220, 31, 255, 0.2);
-      border-bottom: 1px solid rgba(220, 31, 255, 0.2);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .crypto-ticker-content {
-      display: flex;
-      white-space: nowrap;
-      animation: ticker 60s linear infinite;
-    }
-
-    @keyframes ticker {
-      0% {
-        transform: translateX(100%);
+      @keyframes moveRight {
+        0% {
+          transform: translateX(-20px);
+        }
+        100% {
+          transform: translateX(20px);
+        }
       }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
 
-    .crypto-ticker-item {
-      display: inline-flex;
-      align-items: center;
-      margin: 0 20px;
-      font-size: 16px;
-      font-weight: 500;
-      color: white;
-      padding: 6px 12px;
-      border-radius: 20px;
-      background: rgba(0, 255, 163, 0.1);
-      backdrop-filter: blur(5px);
-      transition: all 0.3s ease;
-    }
-
-    .crypto-ticker-item:hover {
-      background: rgba(220, 31, 255, 0.2);
-      transform: scale(1.05);
-    }
-
-    .crypto-icon {
-      margin-right: 8px;
-      border-radius: 50%;
-    }
-
-    .percent-up {
-      color: #00FFA3;
-      margin-left: 6px;
-    }
-
-    .percent-down {
-      color: #FF3E3E;
-      margin-left: 6px;
-    }
-
-    .nsc {
-      background: linear-gradient(90deg, rgba(220, 31, 255, 0.2) 0%, rgba(0, 255, 163, 0.2) 100%) !important;
-    }
-
-    /* Mobile Menu */
-    @media (max-width: 767px) {
-      .mobile-header {
+      /* Botão de Idioma */
+      .language-switcher {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #1e003e;
+        top: 20px;
+        right: 20px;
         z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 16px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1001;
       }
 
-      .hamburger-btn {
-        background: none;
+      .language-btn {
+        background: rgba(220, 31, 255, 0.5);
+        backdrop-filter: blur(5px);
         border: none;
-        font-size: 24px;
-        color: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
-      }
-
-      .buy-btn-mobile {
-        background: linear-gradient(to right, #00ffa3, #dc1fff);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         color: white;
-        padding: 8px 16px;
-        border-radius: 6px;
-        font-weight: bold;
-        text-decoration: none;
-        display: inline-block;
-        transition: transform 0.2s ease;
       }
 
-      .buy-btn-mobile:hover {
+      .language-btn:hover {
+        background: rgba(0, 255, 163, 0.7);
+        transform: scale(1.1);
+      }
+
+      .content-en {
+        display: block;
+      }
+
+      .content-pt {
+        display: none;
+      }
+
+      body.portuguese .content-en {
+        display: none;
+      }
+
+      body.portuguese .content-pt {
+        display: block;
+      }
+
+      /* Floating Coins */
+      .coin {
+        position: absolute;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300FFA3"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/></svg>');
+        background-size: contain;
+        background-repeat: no-repeat;
+        opacity: 0.8;
+        animation: floatCoin 15s linear infinite;
+        z-index: -1;
+      }
+
+      @keyframes floatCoin {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.8;
+        }
+        90% {
+          opacity: 0.8;
+        }
+        100% {
+          transform: translateY(-100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* Crypto Ticker */
+      .crypto-ticker-footer {
+        background: linear-gradient(
+          90deg,
+          rgba(30, 0, 62, 0.9) 0%,
+          rgba(0, 240, 255, 0.2) 50%,
+          rgba(30, 0, 62, 0.9) 100%
+        );
+        padding: 12px 0;
+        border-top: 1px solid rgba(220, 31, 255, 0.2);
+        border-bottom: 1px solid rgba(220, 31, 255, 0.2);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .crypto-ticker-content {
+        display: flex;
+        white-space: nowrap;
+        animation: ticker 60s linear infinite;
+      }
+
+      @keyframes ticker {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .crypto-ticker-item {
+        display: inline-flex;
+        align-items: center;
+        margin: 0 20px;
+        font-size: 16px;
+        font-weight: 500;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        background: rgba(0, 255, 163, 0.1);
+        backdrop-filter: blur(5px);
+        transition: all 0.3s ease;
+      }
+
+      .crypto-ticker-item:hover {
+        background: rgba(220, 31, 255, 0.2);
         transform: scale(1.05);
       }
 
-      .mobile-menu {
-        display: none;
-        background-color: #2e1065;
-        padding: 16px;
-        position: absolute;
-        top: 56px;
-        left: 0;
-        width: 100%;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        z-index: 999;
+      .crypto-icon {
+        margin-right: 8px;
+        border-radius: 50%;
       }
 
-      .mobile-menu a,
-      .mobile-menu button {
-        display: block;
-        color: white;
-        text-decoration: none;
-        margin-bottom: 10px;
-        font-size: 16px;
-        transition: opacity 0.3s ease;
+      .percent-up {
+        color: #00ffa3;
+        margin-left: 6px;
       }
 
-      .language-switcher.mobile-lang {
-        position: relative;
-        top: auto;
-        right: auto;
-        margin-top: 10px;
-        width: 100%;
-        text-align: left;
-        padding: 8px 12px;
+      .percent-down {
+        color: #ff3e3e;
+        margin-left: 6px;
+      }
+
+      .nsc {
+        background: linear-gradient(
+          90deg,
+          rgba(220, 31, 255, 0.2) 0%,
+          rgba(0, 255, 163, 0.2) 100%
+        ) !important;
+      }
+
+      /* Mobile Menu */
+      @media (max-width: 767px) {
+        .mobile-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #1e003e;
+          z-index: 1000;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px 16px;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          z-index: 1001;
+        }
+
+        .hamburger-btn {
+          background: none;
+          border: none;
+          font-size: 24px;
+          color: white;
+          cursor: pointer;
+        }
+
+        .buy-btn-mobile {
+          background: linear-gradient(to right, #00ffa3, #dc1fff);
+          color: white;
+          padding: 8px 16px;
+          border-radius: 6px;
+          font-weight: bold;
+          text-decoration: none;
+          display: inline-block;
+          transition: transform 0.2s ease;
+          margin-left: auto;
+          margin-right: 10px;
+        }
+
+        .buy-btn-mobile:hover {
+          transform: scale(1.05);
+        }
+
+        .mobile-menu {
+          display: none;
+          background-color: #2e1065;
+          padding: 16px;
+          position: absolute;
+          top: 56px;
+          left: 0;
+          width: 100%;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+          z-index: 999;
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+          display: block;
+          color: white;
+          text-decoration: none;
+          margin-bottom: 10px;
+          font-size: 16px;
+          transition: opacity 0.3s ease;
+        }
+
+        .language-switcher.mobile-lang {
+          position: relative;
+          top: auto;
+          right: auto;
+          margin-top: 10px;
+          width: 100%;
+          text-align: left;
+          padding: 8px 12px;
+          border: none;
+          background: rgba(220, 31, 255, 0.3);
+          color: white;
+        }
+      }
+
+      /* News Widget */
+      .crypto-news-widget {
+        background: rgba(30, 0, 62, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 20px;
+        max-width: 400px;
+        margin: 30px auto;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(220, 31, 255, 0.2);
+      }
+
+      .widget-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .widget-mascot {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 50%;
+        border: 2px solid #00ffa3;
+      }
+
+      .widget-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #dc1fff, #00ffa3);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .widget-refresh-btn {
+        margin-left: auto;
+        background: none;
         border: none;
-        background: rgba(220, 31, 255, 0.3);
-        color: white;
+        color: #00ffa3;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: transform 0.3s ease;
       }
-    }
-  </style>
-</head>
-<body class="english">
 
-  <!-- Floating Coins -->
-  <div id="floatingCoins" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: -1;"></div>
+      .widget-refresh-btn:hover {
+        transform: rotate(180deg);
+      }
 
-  <!-- Mobile Header -->
-  <div class="mobile-header md:hidden">
-    <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
-    <a href="#buy" class="buy-btn-mobile">Buy $NSC</a>
-  </div>
+      .widget-language-toggle {
+        background: rgba(220, 31, 255, 0.2);
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        cursor: pointer;
+        margin-left: 8px;
+      }
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu md:hidden">
-    <a href="#">Home</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#tokenomics">Tokenomics</a>
-    <a href="#">Community</a>
-    <a href="https://twitter.com/NewscoinOf" target="_blank">Twitter</a>
-    <a href="https://t.me/+Qmi0Y9mPd642ZTJh" target="_blank">Telegram</a>
-    <!-- Language Switcher no menu mobile -->
-    <button class="language-switcher mobile-lang btn-hover-effect" onclick="toggleLanguage()">
-      <span class="content-pt">EN</span>
-      <span class="content-en">PT</span>
-    </button>
-  </div>
+      .news-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 500px;
+        overflow-y: auto;
+      }
 
-  <!-- Desktop Language Switcher -->
-  <div class="language-switcher hidden md:block">
-    <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
-      <span class="content-pt">EN</span>
-      <span class="content-en">PT</span>
-    </button>
-  </div>
+      .news-item-widget {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(220, 31, 255, 0.1);
+      }
 
-  <!-- Desktop Header -->
-  <header class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 bg-solana-dark">
-    <!-- Logo -->
-    <div class="flex items-center mb-4 md:mb-0">
-      <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NewsCoin" class="h-10 mr-4 logo-animation" />
-      <h1 class="text-xl font-bold hidden md:block solana-gradient-text">NEWS COIN</h1>
+      .news-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .news-link:hover {
+        color: #00ffa3;
+      }
+
+      .news-icon {
+        margin-right: 10px;
+        color: #dc1fff;
+        font-size: 0.9rem;
+      }
+
+      .news-title {
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .widget-footer {
+        margin-top: 15px;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="english">
+    <!-- Floating Coins -->
+    <div
+      id="floatingCoins"
+      style="
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: -1;
+      "
+    ></div>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header md:hidden">
+      <button class="hamburger-btn" onclick="toggleMobileMenu()">☰</button>
+      <a href="#buy" class="buy-btn-mobile">Buy $NSC</a>
     </div>
 
-    <!-- Navigation -->
-    <nav class="hidden md:flex flex-wrap gap-4 mb-4 md:mb-0">
-      <a href="#" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt">Início</a>
-      <a href="#roadmap" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt">Roadmap</a>
-      <a href="#tokenomics" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt">Tokenomics</a>
-      <a href="#" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt">Comunidade</a>
-      <a href="#" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en">Home</a>
-      <a href="#roadmap" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en">Roadmap</a>
-      <a href="#tokenomics" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en">Tokenomics</a>
-      <a href="#" class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en">Community</a>
-    </nav>
-
-    <!-- Social & Buy Button -->
-    <div class="hidden md:flex flex-wrap gap-2">
-      <button onclick="window.open('https://x.com/NewscoinOf')" class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
-        <i class="fab fa-twitter mr-2"></i> Twitter
-      </button>
-      <button onclick="window.open('https://t.me/+Qmi0Y9mPd642ZTJh')" class="social-button px-4 py-2 rounded-lg font-bold flex items-center">
-        <i class="fab fa-telegram mr-2"></i> Telegram
-      </button>
-      <a href="#buy" class="buy-button px-4 py-2 rounded-lg font-bold bg-gradient-to-r from-solana-teal to-solana-purple text-white pulse">
-        <span class="content-pt">Comprar $NSC</span>
-        <span class="content-en">Buy $NSC</span>
-      </a>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="main-container text-center py-16 px-4 md:px-10 lg:px-20 relative">
-    <div class="max-w-4xl mx-auto">
-      <img src="https://i.postimg.cc/yxSg8knQ/Shiba-Inu-lendo-jornal-News-Coin.png" alt="NewsCoin Mascot" class="w-48 md:w-64 mx-auto mb-8 logo-animation" />
-      <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
-        <span class="content-pt solana-gradient-text">O seu radar diário do universo cripto</span>
-        <span class="content-en solana-gradient-text">Your daily crypto universe radar</span>
-      </h1>
-      <p class="text-xl md:text-2xl mb-8 font-medium text-solana-teal">
-        <span class="content-pt">Quanto mais loucura, mais valor.</span>
-        <span class="content-en">The crazier, the more valuable.</span>
-      </p>
-      <a href="https://x.com/NewscoinOf" class="nsc-button px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-solana-purple to-solana-teal text-white shadow-lg transform hover:scale-105 transition-all duration-300">
-        <span class="content-pt">Dê um NSC</span>
-        <span class="content-en">Give an NSC</span>
-      </a>
-    </div>
-  </main>
-
-  <!-- Features Section -->
-  <section class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto">
-    <!-- Feature 1 -->
-    <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-award"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">Distribua NSC</h3>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">Distribute NSC</h3>
-      <p class="text-solana-light content-pt">Você pode distribuir uma NSC para premiar quem espalhou a fake news mais criativa.</p>
-      <p class="text-solana-light content-en">You can distribute a NSC to reward who spread the most creative fake news.</p>
-    </div>
-    <!-- Feature 2 -->
-    <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-laugh-squint"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">Memes Oficiais</h3>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">Official Memes</h3>
-      <p class="text-solana-light content-pt">Memes oficiais gerados pela comunidade com base nas notícias da semana.</p>
-      <p class="text-solana-light content-en">Official memes generated by the community based on the week's news.</p>
-    </div>
-    <!-- Feature 3 -->
-    <div class="feature-box p-6 rounded-xl shadow-md">
-      <div class="feature-icon text-4xl mb-4">
-        <i class="fas fa-chart-line"></i>
-      </div>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">Oráculo Cripto</h3>
-      <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">Crypto Oracle</h3>
-      <p class="text-solana-light content-pt">Um oráculo cripto baseado nas previsões da Fox News e CNN (todas erradas, claro).</p>
-      <p class="text-solana-light content-en">A crypto oracle based on Fox News and CNN predictions (all wrong, of course).</p>
-    </div>
-  </section>
-
-  <!-- Roadmap -->
-  <section id="roadmap" class="roadmap py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto">
-    <div class="roadmap-container p-8 rounded-xl shadow-md bg-solana-dark">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text solana-gradient-text">
-        <span class="content-pt">Plano de Desenvolvimento</span>
-        <span class="content-en">Roadmap</span>
-      </h2>
-      <div class="space-y-6">
-        <div class="roadmap-item">
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">Lançamento do Whitepaper</h3>
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">Whitepaper Launch</h3>
-          <p class="text-solana-light content-pt">Documento oficial explicando a visão por trás da News Coin.</p>
-          <p class="text-solana-light content-en">Official document explaining the vision behind News Coin.</p>
-        </div>
-        <div class="roadmap-item">
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">Parcerias com influenciadores</h3>
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">Influencer Partnerships</h3>
-          <p class="text-solana-light content-pt">Colaborações com os maiores criadores de conteúdo cripto.</p>
-          <p class="text-solana-light content-en">Collaborations with the biggest crypto content creators.</p>
-        </div>
-        <div class="roadmap-item">
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">Plataforma para criação de memes</h3>
-          <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">Meme Creation Platform</h3>
-          <p class="text-solana-light content-pt">Ferramenta integrada para criação e compartilhamento de memes.</p>
-          <p class="text-solana-light content-en">Integrated tool for meme creation and sharing.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tokenomics -->
-  <section id="tokenomics" class="tokenomics py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text solana-gradient-text">
-      <span class="content-pt">Economia do Token</span>
-      <span class="content-en">Tokenomics</span>
-    </h2>
-    <div class="tokenomics-container p-8 rounded-xl shadow-md bg-solana-dark">
-      <ul class="space-y-4">
-        <li class="tokenomics-item">
-          <strong class="text-lg content-pt text-solana-teal">Nome do Token:</strong>
-          <strong class="text-lg content-en text-solana-teal">Token Name:</strong>
-          <span class="text-solana-light"> News Coin ($NSC)</span>
-        </li>
-        <li class="tokenomics-item">
-          <strong class="text-lg content-pt text-solana-teal">Oferta Total:</strong>
-          <strong class="text-lg content-en text-solana-teal">Total Supply:</strong>
-          <span class="text-solana-light"> 1,000,000,000 $NSC</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Memecoins -->
-  <section id="memecoins" class="py-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto">
-    <div class="memecoin-section-header text-center">
-      <img src="https://livecoins.com.br/wp-content/uploads/2022/01/solana.jpg.webp" alt="Solana Memecoins Explosion" class="memecoin-header-image mx-auto mb-6" />
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 glow-text solana-gradient-text">
-        <span class="content-pt">Memecoins que Explodiram na Solana</span>
-        <span class="content-en">Meme Coins that Boomed on Solana</span>
-      </h2>
-    </div>
-    <div class="memecoin-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Trump Card -->
-      <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
-        <img src="https://s2-valor.glbimg.com/IQiXZoAJRgcPdTDyxX-wX9GVAUA=/0x0:732x864/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/F/4/TF6WugQbGrQcz1Pw7vUQ/strump.jpg" alt="TRUMP" class="memecoin-logo w-20 h-20 mx-auto mb-4" />
-        <h3 class="text-xl font-bold">Official Trump (TRUMP)</h3>
-        <p class="text-sm mt-2 content-pt">Inspirada em Donald Trump, atingiu mais de US$ 2,6 bilhões de marketcap.</p>
-        <p class="text-sm mt-2 content-en">Inspired by Donald Trump, it reached over $2.6 billion in market cap.</p>
-      </div>
-      <!-- Bonk Card -->
-      <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.Qw1cuDyOc6_UqYSOcZP-7AHaD4&pid=Api" alt="BONK" class="memecoin-logo w-20 h-20 mx-auto mb-4" />
-        <h3 class="text-xl font-bold">Bonk (BONK)</h3>
-        <p class="text-sm mt-2 content-pt">Primeira memecoin de cachorro da Solana, distribuída via airdrop.</p>
-        <p class="text-sm mt-2 content-en">First dog memecoin on Solana, distributed via airdrop.</p>
-      </div>
-      <!-- Wif Card -->
-      <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.9ODyzs08q45ES1145Yi0hwHaEK&pid=Api" alt="WIF" class="memecoin-logo w-20 h-20 mx-auto mb-4" />
-        <h3 class="text-xl font-bold">dogwifhat (WIF)</h3>
-        <p class="text-sm mt-2 content-pt">O cachorro com chapéu conquistou mais de US$ 1,1 bilhão em valor de mercado.</p>
-        <p class="text-sm mt-2 content-en">The dog with a hat reached over $1.1 billion in market value.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Crypto News Widget -->
-  <div class="crypto-news-widget bg-solana-dark mx-auto mt-16 p-6 rounded-xl shadow-md max-w-xs">
-    <div class="widget-header flex items-center mb-4">
-      <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="News Coin Mascot" class="widget-mascot w-10 h-10 mr-2 rounded-full border-2 border-solana-teal" />
-      <h3 class="widget-title text-xl font-bold solana-gradient-text content-pt">Notícias Cripto</h3>
-      <h3 class="widget-title text-xl font-bold solana-gradient-text content-en">Crypto News</h3>
-      <button class="ml-auto widget-refresh-btn" onclick="loadCryptoNews()">
-        <i class="fas fa-sync-alt"></i>
-      </button>
-      <button class="widget-language-toggle ml-2" onclick="toggleLanguage()">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu md:hidden">
+      <a href="#">Home</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#">Community</a>
+      <a href="https://twitter.com/NewscoinOf" target="_blank">Twitter</a>
+      <a href="https://t.me/+Qmi0Y9mPd642ZTJh" target="_blank">Telegram</a>
+      <!-- Language Switcher no menu mobile -->
+      <button
+        class="language-switcher mobile-lang btn-hover-effect"
+        onclick="toggleLanguage()"
+      >
         <span class="content-pt">EN</span>
         <span class="content-en">PT</span>
       </button>
     </div>
-    <ul class="news-list" id="news-list"></ul>
-    <div class="widget-footer mt-4 text-sm text-gray-400 text-center">
-      <span class="content-pt">Fonte: Livecoins</span>
-      <span class="content-en">Source: Cointelegraph</span>
+
+    <!-- Desktop Language Switcher -->
+    <div class="language-switcher hidden md:block">
+      <button class="language-btn btn-hover-effect" onclick="toggleLanguage()">
+        <span class="content-pt">EN</span>
+        <span class="content-en">PT</span>
+      </button>
     </div>
-  </div>
 
-  <!-- Footer Ticker -->
-  <footer class="crypto-ticker-footer mt-12">
-    <div class="crypto-ticker-content" id="crypto-ticker">
-      <!-- Ticker items will be added dynamically -->
+    <!-- Desktop Header -->
+    <header
+      class="header-container py-6 px-4 md:px-10 lg:px-20 flex flex-col md:flex-row justify-between items-center sticky top-0 z-50 bg-solana-dark"
+    >
+      <!-- Logo -->
+      <div class="flex items-center mb-4 md:mb-0">
+        <img
+          src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png"
+          alt="NewsCoin"
+          class="h-10 mr-4 logo-animation"
+        />
+        <h1 class="text-xl font-bold hidden md:block solana-gradient-text">
+          NEWS COIN
+        </h1>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex flex-wrap gap-4 mb-4 md:mb-0">
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
+          >Início</a
+        >
+        <a
+          href="#roadmap"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
+          >Roadmap</a
+        >
+        <a
+          href="#tokenomics"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
+          >Tokenomics</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
+          >Comunidade</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en"
+          >Home</a
+        >
+        <a
+          href="#roadmap"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en"
+          >Roadmap</a
+        >
+        <a
+          href="#tokenomics"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en"
+          >Tokenomics</a
+        >
+        <a
+          href="#"
+          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-en"
+          >Community</a
+        >
+      </nav>
+
+      <!-- Social & Buy Button -->
+      <div class="hidden md:flex flex-wrap gap-2">
+        <button
+          onclick="window.open('https://x.com/NewscoinOf')"
+          class="social-button px-4 py-2 rounded-lg font-bold flex items-center"
+        >
+          <i class="fab fa-twitter mr-2"></i> Twitter
+        </button>
+        <button
+          onclick="window.open('https://t.me/+Qmi0Y9mPd642ZTJh')"
+          class="social-button px-4 py-2 rounded-lg font-bold flex items-center"
+        >
+          <i class="fab fa-telegram mr-2"></i> Telegram
+        </button>
+        <a
+          href="#buy"
+          class="buy-button px-4 py-2 rounded-lg font-bold bg-gradient-to-r from-solana-teal to-solana-purple text-white pulse"
+        >
+          <span class="content-pt">Comprar $NSC</span>
+          <span class="content-en">Buy $NSC</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main
+      class="main-container text-center py-16 px-4 md:px-10 lg:px-20 relative"
+    >
+      <div class="max-w-4xl mx-auto">
+        <img
+          src="https://i.postimg.cc/yxSg8knQ/Shiba-Inu-lendo-jornal-News-Coin.png"
+          alt="NewsCoin Mascot"
+          class="w-48 md:w-64 mx-auto mb-8 logo-animation"
+        />
+        <h1 class="text-3xl md:text-5xl font-bold mb-6 glow-text">
+          <span class="content-pt solana-gradient-text"
+            >O seu radar diário do universo cripto</span
+          >
+          <span class="content-en solana-gradient-text"
+            >Your daily crypto universe radar</span
+          >
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 font-medium text-solana-teal">
+          <span class="content-pt">Quanto mais loucura, mais valor.</span>
+          <span class="content-en">The crazier, the more valuable.</span>
+        </p>
+        <a
+          href="https://x.com/NewscoinOf"
+          class="nsc-button px-8 py-3 rounded-full font-bold text-lg bg-gradient-to-r from-solana-purple to-solana-teal text-white shadow-lg transform hover:scale-105 transition-all duration-300"
+        >
+          <span class="content-pt">Dê um NSC</span>
+          <span class="content-en">Give an NSC</span>
+        </a>
+      </div>
+    </main>
+
+    <!-- Features Section -->
+    <section
+      class="features grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto"
+    >
+      <!-- Feature 1 -->
+      <div class="feature-box p-6 rounded-xl shadow-md">
+        <div class="feature-icon text-4xl mb-4">
+          <i class="fas fa-award"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">
+          Distribua NSC
+        </h3>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">
+          Distribute NSC
+        </h3>
+        <p class="text-solana-light content-pt">
+          Você pode distribuir uma NSC para premiar quem espalhou a fake news
+          mais criativa.
+        </p>
+        <p class="text-solana-light content-en">
+          You can distribute a NSC to reward who spread the most creative fake
+          news.
+        </p>
+      </div>
+      <!-- Feature 2 -->
+      <div class="feature-box p-6 rounded-xl shadow-md">
+        <div class="feature-icon text-4xl mb-4">
+          <i class="fas fa-laugh-squint"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">
+          Memes Oficiais
+        </h3>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">
+          Official Memes
+        </h3>
+        <p class="text-solana-light content-pt">
+          Memes oficiais gerados pela comunidade com base nas notícias da
+          semana.
+        </p>
+        <p class="text-solana-light content-en">
+          Official memes generated by the community based on the week's news.
+        </p>
+      </div>
+      <!-- Feature 3 -->
+      <div class="feature-box p-6 rounded-xl shadow-md">
+        <div class="feature-icon text-4xl mb-4">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-pt">
+          Oráculo Cripto
+        </h3>
+        <h3 class="text-xl font-bold mb-3 text-solana-teal content-en">
+          Crypto Oracle
+        </h3>
+        <p class="text-solana-light content-pt">
+          Um oráculo cripto baseado nas previsões da Fox News e CNN (todas
+          erradas, claro).
+        </p>
+        <p class="text-solana-light content-en">
+          A crypto oracle based on Fox News and CNN predictions (all wrong, of
+          course).
+        </p>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section
+      id="roadmap"
+      class="roadmap py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
+    >
+      <div class="roadmap-container p-8 rounded-xl shadow-md bg-solana-dark">
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text solana-gradient-text"
+        >
+          <span class="content-pt">Plano de Desenvolvimento</span>
+          <span class="content-en">Roadmap</span>
+        </h2>
+        <div class="space-y-6">
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">
+              Lançamento do Whitepaper
+            </h3>
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">
+              Whitepaper Launch
+            </h3>
+            <p class="text-solana-light content-pt">
+              Documento oficial explicando a visão por trás da News Coin.
+            </p>
+            <p class="text-solana-light content-en">
+              Official document explaining the vision behind News Coin.
+            </p>
+          </div>
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">
+              Parcerias com influenciadores
+            </h3>
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">
+              Influencer Partnerships
+            </h3>
+            <p class="text-solana-light content-pt">
+              Colaborações com os maiores criadores de conteúdo cripto.
+            </p>
+            <p class="text-solana-light content-en">
+              Collaborations with the biggest crypto content creators.
+            </p>
+          </div>
+          <div class="roadmap-item">
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-pt">
+              Plataforma para criação de memes
+            </h3>
+            <h3 class="text-xl font-bold mb-2 text-solana-teal content-en">
+              Meme Creation Platform
+            </h3>
+            <p class="text-solana-light content-pt">
+              Ferramenta integrada para criação e compartilhamento de memes.
+            </p>
+            <p class="text-solana-light content-en">
+              Integrated tool for meme creation and sharing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tokenomics -->
+    <section
+      id="tokenomics"
+      class="tokenomics py-16 px-4 md:px-10 lg:px-20 max-w-4xl mx-auto"
+    >
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-12 text-center glow-text solana-gradient-text"
+      >
+        <span class="content-pt">Economia do Token</span>
+        <span class="content-en">Tokenomics</span>
+      </h2>
+      <div class="tokenomics-container p-8 rounded-xl shadow-md bg-solana-dark">
+        <ul class="space-y-4">
+          <li class="tokenomics-item">
+            <strong class="text-lg content-pt text-solana-teal"
+              >Nome do Token:</strong
+            >
+            <strong class="text-lg content-en text-solana-teal"
+              >Token Name:</strong
+            >
+            <span class="text-solana-light"> News Coin ($NSC)</span>
+          </li>
+          <li class="tokenomics-item">
+            <strong class="text-lg content-pt text-solana-teal"
+              >Oferta Total:</strong
+            >
+            <strong class="text-lg content-en text-solana-teal"
+              >Total Supply:</strong
+            >
+            <span class="text-solana-light"> 1,000,000,000 $NSC</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Memecoins -->
+    <section
+      id="memecoins"
+      class="py-16 px-4 md:px-10 lg:px-20 max-w-6xl mx-auto"
+    >
+      <div class="memecoin-section-header text-center">
+        <img
+          src="https://livecoins.com.br/wp-content/uploads/2022/01/solana.jpg.webp"
+          alt="Solana Memecoins Explosion"
+          class="memecoin-header-image mx-auto mb-6"
+        />
+        <h2
+          class="text-3xl md:text-4xl font-bold mb-12 glow-text solana-gradient-text"
+        >
+          <span class="content-pt">Memecoins que Explodiram na Solana</span>
+          <span class="content-en">Meme Coins that Boomed on Solana</span>
+        </h2>
+      </div>
+      <div
+        class="memecoin-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Trump Card -->
+        <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
+          <img
+            src="https://s2-valor.glbimg.com/IQiXZoAJRgcPdTDyxX-wX9GVAUA=/0x0:732x864/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2025/F/4/TF6WugQbGrQcz1Pw7vUQ/strump.jpg"
+            alt="TRUMP"
+            class="memecoin-logo w-20 h-20 mx-auto mb-4"
+          />
+          <h3 class="text-xl font-bold">Official Trump (TRUMP)</h3>
+          <p class="text-sm mt-2 content-pt">
+            Inspirada em Donald Trump, atingiu mais de US$ 2,6 bilhões de
+            marketcap.
+          </p>
+          <p class="text-sm mt-2 content-en">
+            Inspired by Donald Trump, it reached over $2.6 billion in market
+            cap.
+          </p>
+        </div>
+        <!-- Bonk Card -->
+        <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
+          <img
+            src="https://tse2.mm.bing.net/th?id=OIP.Qw1cuDyOc6_UqYSOcZP-7AHaD4&pid=Api"
+            alt="BONK"
+            class="memecoin-logo w-20 h-20 mx-auto mb-4"
+          />
+          <h3 class="text-xl font-bold">Bonk (BONK)</h3>
+          <p class="text-sm mt-2 content-pt">
+            Primeira memecoin de cachorro da Solana, distribuída via airdrop.
+          </p>
+          <p class="text-sm mt-2 content-en">
+            First dog memecoin on Solana, distributed via airdrop.
+          </p>
+        </div>
+        <!-- Wif Card -->
+        <div class="memecoin-card bg-solana-dark p-6 rounded-xl text-center">
+          <img
+            src="https://tse2.mm.bing.net/th?id=OIP.9ODyzs08q45ES1145Yi0hwHaEK&pid=Api"
+            alt="WIF"
+            class="memecoin-logo w-20 h-20 mx-auto mb-4"
+          />
+          <h3 class="text-xl font-bold">dogwifhat (WIF)</h3>
+          <p class="text-sm mt-2 content-pt">
+            O cachorro com chapéu conquistou mais de US$ 1,1 bilhão em valor de
+            mercado.
+          </p>
+          <p class="text-sm mt-2 content-en">
+            The dog with a hat reached over $1.1 billion in market value.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crypto News Widget -->
+    <div
+      class="crypto-news-widget bg-solana-dark mx-auto mt-16 p-6 rounded-xl shadow-md max-w-xs"
+    >
+      <div class="widget-header flex items-center mb-4">
+        <img
+          src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png"
+          alt="News Coin Mascot"
+          class="widget-mascot w-10 h-10 mr-2 rounded-full border-2 border-solana-teal"
+        />
+        <h3
+          class="widget-title text-xl font-bold solana-gradient-text content-pt"
+        >
+          Notícias Cripto
+        </h3>
+        <h3
+          class="widget-title text-xl font-bold solana-gradient-text content-en"
+        >
+          Crypto News
+        </h3>
+        <button class="ml-auto widget-refresh-btn" onclick="loadCryptoNews()">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button class="widget-language-toggle ml-2" onclick="toggleLanguage()">
+          <span class="content-pt">EN</span>
+          <span class="content-en">PT</span>
+        </button>
+      </div>
+      <ul class="news-list" id="news-list"></ul>
+      <div class="widget-footer mt-4 text-sm text-gray-400 text-center">
+        <span class="content-pt">Fonte: Livecoins</span>
+        <span class="content-en">Source: Cointelegraph</span>
+      </div>
     </div>
-  </footer>
 
-  <!-- Scripts -->
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
+    <!-- Footer Ticker -->
+    <footer class="crypto-ticker-footer mt-12">
+      <div class="crypto-ticker-content" id="crypto-ticker">
+        <!-- Ticker items will be added dynamically -->
+      </div>
+    </footer>
 
-    function detectSiteLang() {
-      return document.body.classList.contains("portuguese") ? "pt" : "en";
-    }
+    <!-- Scripts -->
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.style.display = menu.style.display === "block" ? "none" : "block";
+      }
 
-    function toggleLanguage() {
-      document.body.classList.toggle("portuguese");
-      const newLang = document.body.classList.contains("portuguese") ? "pt" : "en";
-      document.documentElement.lang = newLang;
-      loadCryptoNews();
-    }
+      function detectSiteLang() {
+        return document.body.classList.contains("portuguese") ? "pt" : "en";
+      }
 
-    async function loadCryptoNews() {
-      const list = document.getElementById("news-list");
-      const currentLang = detectSiteLang();
-      const sourceMap = {
-        en: "https://cointelegraph.com/rss",
-        pt: "https://livecoins.com.br/feed/",
-      };
-      const rssUrl = sourceMap[currentLang] || sourceMap.en;
+      function toggleLanguage() {
+        document.body.classList.toggle("portuguese");
+        const newLang = document.body.classList.contains("portuguese")
+          ? "pt"
+          : "en";
+        document.documentElement.lang = newLang;
+        loadCryptoNews();
+      }
 
-      try {
-        list.innerHTML = `<li class="news-item-widget"><div class="news-link"><i class="fas fa-spinner fa-spin news-icon"></i><span class="news-title">${currentLang === "pt" ? "Carregando notícias..." : "Loading news..."}</span></div></li>`;
-        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`);
-        const data = await res.json();
+      async function loadCryptoNews() {
+        const list = document.getElementById("news-list");
+        const currentLang = detectSiteLang();
+        const sourceMap = {
+          en: "https://cointelegraph.com/rss",
+          pt: "https://livecoins.com.br/feed/",
+        };
+        const rssUrl = sourceMap[currentLang] || sourceMap.en;
 
-        if (data.items && data.items.length > 0) {
-          list.innerHTML = "";
-          data.items.slice(0, 3).forEach(item => {
-            const li = document.createElement("li");
-            li.className = "news-item-widget";
-            li.innerHTML = `<a href="${item.link}" target="_blank" class="news-link">
+        try {
+          list.innerHTML = `<li class="news-item-widget"><div class="news-link"><i class="fas fa-spinner fa-spin news-icon"></i><span class="news-title">${
+            currentLang === "pt" ? "Carregando notícias..." : "Loading news..."
+          }</span></div></li>`;
+          const res = await fetch(
+            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(
+              rssUrl
+            )}`
+          );
+          const data = await res.json();
+
+          if (data.items && data.items.length > 0) {
+            list.innerHTML = "";
+            data.items.slice(0, 10).forEach((item) => {
+              const li = document.createElement("li");
+              li.className = "news-item-widget";
+              li.innerHTML = `<a href="${item.link}" target="_blank" class="news-link">
               <i class="fas fa-newspaper news-icon"></i>
               <span class="news-title">${item.title}</span>
             </a>`;
-            list.appendChild(li);
-          });
-        } else throw new Error("Erro ao carregar notícias");
-      } catch (error) {
-        list.innerHTML = `<li class="news-item-widget"><div class="news-link">
+              list.appendChild(li);
+            });
+          } else throw new Error("Erro ao carregar notícias");
+        } catch (error) {
+          list.innerHTML = `<li class="news-item-widget"><div class="news-link">
           <i class="fas fa-exclamation-triangle news-icon"></i>
-          <span class="news-title">${currentLang === "pt" ? "Erro ao carregar notícias." : "Error loading news."}</span>
+          <span class="news-title">${
+            currentLang === "pt"
+              ? "Erro ao carregar notícias."
+              : "Error loading news."
+          }</span>
         </div></li>`;
+        }
       }
-    }
 
-    async function fetchCryptoPrices() {
-      const coins = [
-        { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
-        { id: "ethereum", symbol: "ETH", name: "Ethereum" },
-        { id: "solana", symbol: "SOL", name: "Solana" },
-        { id: "binancecoin", symbol: "BNB", name: "BNB" },
-        { id: "ripple", symbol: "XRP", name: "XRP" },
-        { id: "cardano", symbol: "ADA", name: "Cardano" },
-        { id: "dogecoin", symbol: "DOGE", name: "Dogecoin" },
-        { id: "polkadot", symbol: "DOT", name: "Polkadot" },
-        { id: "avalanche-2", symbol: "AVAX", name: "Avalanche" },
-        { id: "chainlink", symbol: "LINK", name: "Chainlink" },
-        { id: "polygon", symbol: "MATIC", name: "Polygon" },
-        { id: "the-open-network", symbol: "TON", name: "Toncoin" },
-        { id: "shiba-inu", symbol: "SHIB", name: "Shiba Inu" },
-        { id: "litecoin", symbol: "LTC", name: "Litecoin" },
-        { id: "uniswap", symbol: "UNI", name: "Uniswap" },
-        { id: "bitcoin-cash", symbol: "BCH", name: "Bitcoin Cash" },
-        { id: "stellar", symbol: "XLM", name: "Stellar" },
-        { id: "filecoin", symbol: "FIL", name: "Filecoin" },
-        { id: "vechain", symbol: "VET", name: "VeChain" },
-        { id: "monero", symbol: "XMR", name: "Monero" }
-      ];
+      async function fetchCryptoPrices() {
+        const coins = [
+          { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
+          { id: "ethereum", symbol: "ETH", name: "Ethereum" },
+          { id: "solana", symbol: "SOL", name: "Solana" },
+          { id: "binancecoin", symbol: "BNB", name: "BNB" },
+          { id: "ripple", symbol: "XRP", name: "XRP" },
+          { id: "cardano", symbol: "ADA", name: "Cardano" },
+          { id: "dogecoin", symbol: "DOGE", name: "Dogecoin" },
+          { id: "polkadot", symbol: "DOT", name: "Polkadot" },
+          { id: "avalanche-2", symbol: "AVAX", name: "Avalanche" },
+          { id: "chainlink", symbol: "LINK", name: "Chainlink" },
+          { id: "polygon", symbol: "MATIC", name: "Polygon" },
+          { id: "the-open-network", symbol: "TON", name: "Toncoin" },
+          { id: "shiba-inu", symbol: "SHIB", name: "Shiba Inu" },
+          { id: "litecoin", symbol: "LTC", name: "Litecoin" },
+          { id: "uniswap", symbol: "UNI", name: "Uniswap" },
+          { id: "bitcoin-cash", symbol: "BCH", name: "Bitcoin Cash" },
+          { id: "stellar", symbol: "XLM", name: "Stellar" },
+          { id: "filecoin", symbol: "FIL", name: "Filecoin" },
+          { id: "vechain", symbol: "VET", name: "VeChain" },
+          { id: "monero", symbol: "XMR", name: "Monero" },
+        ];
 
-      try {
-        const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coins.map(c => c.id).join("%2C")}`);
-        const data = await res.json();
-        const ticker = document.getElementById("crypto-ticker");
-        
-        // Clear existing items
-        ticker.innerHTML = "";
-        
-        // Add real coins
-        data.forEach(coin => {
-          const span = document.createElement("span");
-          span.className = "crypto-ticker-item";
-          const percentClass = coin.price_change_percentage_24h >= 0 ? "percent-up" : "percent-down";
-          const changeIcon = coin.price_change_percentage_24h >= 0 ? "▲" : "▼";
-          
-          span.innerHTML = `
-            <img src="${coin.image}" alt="${coin.name}" class="crypto-icon w-5 h-5 inline" />
-            ${coin.symbol.toUpperCase()}: $${coin.current_price.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} 
-            <span class="${percentClass}">${changeIcon} ${Math.abs(coin.price_change_percentage_24h).toFixed(2)}%</span>
+        try {
+          const res = await fetch(
+            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coins
+              .map((c) => c.id)
+              .join("%2C")}`
+          );
+          const data = await res.json();
+          const ticker = document.getElementById("crypto-ticker");
+
+          // Clear existing items
+          ticker.innerHTML = "";
+
+          // Add real coins (only once each)
+          data.forEach((coin) => {
+            const span = document.createElement("span");
+            span.className = "crypto-ticker-item";
+            const percentClass =
+              coin.price_change_percentage_24h >= 0
+                ? "percent-up"
+                : "percent-down";
+            const changeIcon =
+              coin.price_change_percentage_24h >= 0 ? "▲" : "▼";
+
+            span.innerHTML = `
+            <img src="${coin.image}" alt="${
+              coin.name
+            }" class="crypto-icon w-5 h-5 inline" />
+            ${coin.symbol.toUpperCase()}: $${coin.current_price.toLocaleString(
+              "en-US",
+              { minimumFractionDigits: 2, maximumFractionDigits: 2 }
+            )}
+            <span class="${percentClass}">${changeIcon} ${Math.abs(
+              coin.price_change_percentage_24h
+            ).toFixed(2)}%</span>
           `;
-          
-          // Duplicate each coin to make the ticker longer
-          ticker.appendChild(span.cloneNode(true));
-          ticker.appendChild(span.cloneNode(true));
-        });
+            ticker.appendChild(span);
+          });
 
-        // Add NSC manually (with duplicates)
-        const nscSpan = document.createElement("span");
-        nscSpan.className = "crypto-ticker-item nsc";
-        nscSpan.innerHTML = `
-          <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" /> 
+          // Add NSC once
+          const nscSpan = document.createElement("span");
+          nscSpan.className = "crypto-ticker-item nsc";
+          nscSpan.innerHTML = `
+          <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" />
           NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
         `;
-        
-        // Add multiple NSC items
-        ticker.appendChild(nscSpan.cloneNode(true));
-        ticker.appendChild(nscSpan.cloneNode(true));
-        ticker.appendChild(nscSpan.cloneNode(true));
-
-      } catch (e) {
-        console.error("Erro ao buscar preços:", e);
-        // Fallback static data
-        const ticker = document.getElementById("crypto-ticker");
-        ticker.innerHTML = `
+          ticker.appendChild(nscSpan);
+        } catch (e) {
+          console.error("Erro ao buscar preços:", e);
+          // Fallback static data
+          const ticker = document.getElementById("crypto-ticker");
+          ticker.innerHTML = `
           <span class="crypto-ticker-item">
             <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin" class="crypto-icon w-5 h-5 inline" />
             BTC: $63,420.50 <span class="percent-up">▲ 1.23%</span>
@@ -652,31 +1001,31 @@
             NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
           </span>
         `;
+        }
       }
-    }
 
-    function createFloatingCoins() {
-      const container = document.getElementById("floatingCoins");
-      const coinCount = 20;
-      
-      for (let i = 0; i < coinCount; i++) {
-        const coin = document.createElement("div");
-        coin.className = "coin";
-        coin.style.left = `${Math.random() * 100}%`;
-        coin.style.top = `${Math.random() * 100}%`;
-        coin.style.animationDelay = `${Math.random() * 10}s`;
-        coin.style.width = coin.style.height = `${20 + Math.random() * 30}px`;
-        coin.style.opacity = `${0.3 + Math.random() * 0.7}`;
-        container.appendChild(coin);
+      function createFloatingCoins() {
+        const container = document.getElementById("floatingCoins");
+        const coinCount = 20;
+
+        for (let i = 0; i < coinCount; i++) {
+          const coin = document.createElement("div");
+          coin.className = "coin";
+          coin.style.left = `${Math.random() * 100}%`;
+          coin.style.top = `${Math.random() * 100}%`;
+          coin.style.animationDelay = `${Math.random() * 10}s`;
+          coin.style.width = coin.style.height = `${20 + Math.random() * 30}px`;
+          coin.style.opacity = `${0.3 + Math.random() * 0.7}`;
+          container.appendChild(coin);
+        }
       }
-    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      createFloatingCoins();
-      fetchCryptoPrices();
-      setInterval(fetchCryptoPrices, 60000);
-      loadCryptoNews();
-    });
-  </script>
-</body>
+      document.addEventListener("DOMContentLoaded", () => {
+        createFloatingCoins();
+        fetchCryptoPrices();
+        setInterval(fetchCryptoPrices, 60000);
+        loadCryptoNews();
+      });
+    </script>
+  </body>
 </html>
