@@ -43,7 +43,7 @@
     <style>
       :root {
         --bg-dark: #1e003e;
-
+        
         --text-light: #f5f5f5;
         --primary: #dc1fff;
         --accent: #00ffa3;
@@ -173,16 +173,6 @@
       .crypto-ticker-content {
         display: flex;
         white-space: nowrap;
-        animation: ticker 60s linear infinite;
-      }
-
-      @keyframes ticker {
-        0% {
-          transform: translateX(100%);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
       }
 
       .crypto-ticker-item {
@@ -197,6 +187,7 @@
         background: rgba(0, 255, 163, 0.1);
         backdrop-filter: blur(5px);
         transition: all 0.3s ease;
+        flex-shrink: 0;
       }
 
       .crypto-ticker-item:hover {
@@ -302,6 +293,36 @@
           border: none;
           background: rgba(220, 31, 255, 0.3);
           color: white;
+        }
+
+        /* Mobile Ticker Adjustments */
+        .crypto-ticker-content {
+          animation: tickerMobile 30s linear infinite;
+        }
+
+        @keyframes tickerMobile {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      }
+
+      /* Desktop Ticker */
+      @media (min-width: 768px) {
+        .crypto-ticker-content {
+          animation: tickerDesktop 60s linear infinite;
+        }
+
+        @keyframes tickerDesktop {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
         }
       }
 
@@ -491,7 +512,7 @@
         >
         <a
           href="#"
-          class="px-3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
+          class="px 3 py-1 rounded-lg hover:bg-opacity-20 hover:bg-solana-teal transition content-pt"
           >Comunidade</a
         >
         <a
@@ -909,6 +930,7 @@
         }
       }
 
+      // Improved crypto ticker with real-time updates and better mobile performance
       async function fetchCryptoPrices() {
         const coins = [
           { id: "bitcoin", symbol: "BTC", name: "Bitcoin" },
@@ -945,8 +967,11 @@
           // Clear existing items
           ticker.innerHTML = "";
 
-          // Add real coins (only once each)
-          data.forEach((coin) => {
+          // Create a clone of the data to duplicate items for seamless looping
+          const tickerItems = [...data, ...data];
+          
+          // Add real coins (duplicated for seamless looping)
+          tickerItems.forEach((coin) => {
             const span = document.createElement("span");
             span.className = "crypto-ticker-item";
             const percentClass =
@@ -971,36 +996,112 @@
             ticker.appendChild(span);
           });
 
-          // Add NSC once
+          // Add NSC twice (once for each loop)
           const nscSpan = document.createElement("span");
           nscSpan.className = "crypto-ticker-item nsc";
           nscSpan.innerHTML = `
           <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" />
           NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
         `;
-          ticker.appendChild(nscSpan);
+          ticker.appendChild(nscSpan.cloneNode(true));
+          ticker.appendChild(nscSpan.cloneNode(true));
         } catch (e) {
           console.error("Erro ao buscar preços:", e);
-          // Fallback static data
+          // Fallback static data with more items for mobile
           const ticker = document.getElementById("crypto-ticker");
-          ticker.innerHTML = `
-          <span class="crypto-ticker-item">
-            <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin" class="crypto-icon w-5 h-5 inline" />
-            BTC: $63,420.50 <span class="percent-up">▲ 1.23%</span>
-          </span>
-          <span class="crypto-ticker-item">
-            <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum" class="crypto-icon w-5 h-5 inline" />
-            ETH: $3,450.20 <span class="percent-down">▼ 0.45%</span>
-          </span>
-          <span class="crypto-ticker-item">
-            <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" alt="Solana" class="crypto-icon w-5 h-5 inline" />
-            SOL: $145.75 <span class="percent-up">▲ 5.67%</span>
-          </span>
-          <span class="crypto-ticker-item nsc">
+          const fallbackCoins = [
+            {
+              symbol: "BTC",
+              name: "Bitcoin",
+              image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png",
+              current_price: 63420.5,
+              price_change_percentage_24h: 1.23,
+            },
+            {
+              symbol: "ETH",
+              name: "Ethereum",
+              image: "https://assets.coingecko.com/coins/images/279/large/ethereum.png",
+              current_price: 3450.2,
+              price_change_percentage_24h: -0.45,
+            },
+            {
+              symbol: "SOL",
+              name: "Solana",
+              image: "https://assets.coingecko.com/coins/images/4128/large/solana.png",
+              current_price: 145.75,
+              price_change_percentage_24h: 5.67,
+            },
+            {
+              symbol: "BNB",
+              name: "BNB",
+              image: "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png",
+              current_price: 585.32,
+              price_change_percentage_24h: 0.89,
+            },
+            {
+              symbol: "XRP",
+              name: "XRP",
+              image: "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png",
+              current_price: 0.52,
+              price_change_percentage_24h: -1.23,
+            },
+            {
+              symbol: "ADA",
+              name: "Cardano",
+              image: "https://assets.coingecko.com/coins/images/975/large/cardano.png",
+              current_price: 0.45,
+              price_change_percentage_24h: 2.34,
+            },
+            {
+              symbol: "DOGE",
+              name: "Dogecoin",
+              image: "https://assets.coingecko.com/coins/images/5/large/dogecoin.png",
+              current_price: 0.12,
+              price_change_percentage_24h: 3.45,
+            },
+            {
+              symbol: "DOT",
+              name: "Polkadot",
+              image: "https://assets.coingecko.com/coins/images/12171/large/polkadot.png",
+              current_price: 6.78,
+              price_change_percentage_24h: -0.56,
+            },
+          ];
+
+          // Add fallback coins (duplicated for seamless looping)
+          fallbackCoins.forEach((coin) => {
+            const percentClass =
+              coin.price_change_percentage_24h >= 0
+                ? "percent-up"
+                : "percent-down";
+            const changeIcon =
+              coin.price_change_percentage_24h >= 0 ? "▲" : "▼";
+
+            const span = document.createElement("span");
+            span.className = "crypto-ticker-item";
+            span.innerHTML = `
+              <img src="${coin.image}" alt="${coin.name}" class="crypto-icon w-5 h-5 inline" />
+              ${coin.symbol}: $${coin.current_price.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+              <span class="${percentClass}">${changeIcon} ${Math.abs(
+              coin.price_change_percentage_24h
+            ).toFixed(2)}%</span>
+            `;
+            ticker.appendChild(span.cloneNode(true));
+            ticker.appendChild(span.cloneNode(true));
+          });
+
+          // Add NSC twice (once for each loop)
+          const nscSpan = document.createElement("span");
+          nscSpan.className = "crypto-ticker-item nsc";
+          nscSpan.innerHTML = `
             <img src="https://i.postimg.cc/Y9jwSJ6n/Chat-GPT-Image-26-de-mai-de-2025-20-34-22.png" alt="NSC" class="crypto-icon w-5 h-5 inline" />
             NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
-          </span>
-        `;
+          `;
+          ticker.appendChild(nscSpan.cloneNode(true));
+          ticker.appendChild(nscSpan.cloneNode(true));
         }
       }
 
@@ -1023,7 +1124,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         createFloatingCoins();
         fetchCryptoPrices();
-        setInterval(fetchCryptoPrices, 60000);
+        setInterval(fetchCryptoPrices, 60000); // Update every minute
         loadCryptoNews();
       });
     </script>
