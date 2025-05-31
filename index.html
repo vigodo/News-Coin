@@ -42,8 +42,7 @@
     <!-- CSS Custom -->
     <style>
       :root {
-        --bg-dark: #1e003e;
-                
+        --bg-dark: #1e003e;                          
         --text-light: #f5f5f5;
         --primary: #dc1fff;
         --accent: #00ffa3;
@@ -296,9 +295,9 @@
           color: white;
         }
 
-        /* Mobile Ticker Adjustments */
+        /* Mobile Ticker Adjustments - Changed from 15s to 25s */
         .crypto-ticker-content {
-          animation: tickerMobile 15s linear infinite;
+          animation: tickerMobile 25s linear infinite;
         }
 
         @keyframes tickerMobile {
@@ -649,7 +648,7 @@
           Crypto Oracle
         </h3>
         <p class="text-solana-light content-pt">
-          Um oráculo cripto baseado nas previsões da Fox News e CNN (todas
+          Um oráculo cripto baseado nas previsões da Fox News and CNN (todas
           erradas, claro).
         </p>
         <p class="text-solana-light content-en">
@@ -970,7 +969,7 @@
 
           // Create a clone of the data to duplicate items for seamless looping
           const tickerItems = [...data, ...data];
-          
+                    
           // Add real coins (duplicated for seamless looping)
           tickerItems.forEach((coin) => {
             const span = document.createElement("span");
@@ -1006,7 +1005,7 @@
           `;
           ticker.appendChild(nscSpan.cloneNode(true));
           ticker.appendChild(nscSpan.cloneNode(true));
-          
+                    
           // Adjust ticker animation based on screen size
           adjustTickerAnimation();
         } catch (e) {
@@ -1106,30 +1105,30 @@
             `;
           ticker.appendChild(nscSpan.cloneNode(true));
           ticker.appendChild(nscSpan.cloneNode(true));
-          
+                    
           // Adjust ticker animation based on screen size
           adjustTickerAnimation();
         }
       }
-      
+            
       function adjustTickerAnimation() {
         const ticker = document.getElementById("crypto-ticker");
         const tickerContent = document.querySelector(".crypto-ticker-content");
-        
+                
         // Calculate total width of all ticker items
         let totalWidth = 0;
         const items = ticker.querySelectorAll(".crypto-ticker-item");
         items.forEach(item => {
           totalWidth += item.offsetWidth + 40; // 40 for margins
         });
-        
+                
         // Set the width of the ticker content to double the total width for seamless looping
         tickerContent.style.width = `${totalWidth}px`;
-        
+                
         // Adjust animation duration based on screen size
         if (window.innerWidth < 768) {
-          // Mobile - faster animation (15s)
-          tickerContent.style.animationDuration = "15s";
+          // Mobile - slower animation (25s)
+          tickerContent.style.animationDuration = "25s";
         } else {
           // Desktop - slower animation (60s)
           tickerContent.style.animationDuration = "60s";
@@ -1157,7 +1156,7 @@
         fetchCryptoPrices();
         setInterval(fetchCryptoPrices, 60000); // Update every minute
         loadCryptoNews();
-        
+                
         // Adjust ticker when window is resized
         window.addEventListener('resize', adjustTickerAnimation);
       });
