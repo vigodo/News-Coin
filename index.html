@@ -43,7 +43,7 @@
     <style>
       :root {
         --bg-dark: #1e003e;
-                
+
         --text-light: #f5f5f5;
         --primary: #dc1fff;
         --accent: #00ffa3;
@@ -176,13 +176,6 @@
         animation: ticker 60s linear infinite;
       }
 
-      /* Faster animation for mobile */
-      @media (max-width: 767px) {
-        .crypto-ticker-content {
-          animation: ticker 30s linear infinite;
-        }
-      }
-
       @keyframes ticker {
         0% {
           transform: translateX(100%);
@@ -204,20 +197,6 @@
         background: rgba(0, 255, 163, 0.1);
         backdrop-filter: blur(5px);
         transition: all 0.3s ease;
-      }
-
-      /* More compact items for mobile */
-      @media (max-width: 767px) {
-        .crypto-ticker-item {
-          margin: 0 10px;
-          padding: 4px 8px;
-          font-size: 14px;
-        }
-        .crypto-icon {
-          width: 16px !important;
-          height: 16px !important;
-          margin-right: 4px !important;
-        }
       }
 
       .crypto-ticker-item:hover {
@@ -1000,12 +979,6 @@
           NSC: $0.0032 <span class="percent-up">▲ 12.34%</span>
         `;
           ticker.appendChild(nscSpan);
-
-          // Duplicate the ticker items for mobile to ensure continuous scrolling
-          if (window.innerWidth <= 767) {
-            const tickerItems = ticker.innerHTML;
-            ticker.innerHTML += tickerItems;
-          }
         } catch (e) {
           console.error("Erro ao buscar preços:", e);
           // Fallback static data
